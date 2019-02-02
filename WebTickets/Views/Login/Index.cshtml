@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "登录页";
+}
+@model WebTickets.UserModel
+
+<style>
+    .error-container {
+        margin: 10px 0;
+    }
+
+    .error-container span {
+        display: block;
+    }
+
+    .text-danger {
+        color: #ff0000;
+        font-weight: normal;
+    }
+</style>
+
+<div class="jumbotron">
+    <h1>登陆</h1>
+    <p class="lead">欢迎你来到这里</p>
+
+    @using (Html.BeginForm(
+        "Login", "Login",
+        new { ReturnUrl = this.Request.QueryString["ReturnUrl"] },
+        FormMethod.Post))
+    {
+        @Html.LabelFor(m => m.RuiJieId)
+        <br />
+        @Html.TextBoxFor(m => m.RuiJieId)
+        <br /><br />
+        @Html.LabelFor(m => m.Password)
+        <br />
+        @Html.PasswordFor(m => m.Password)
+        <br /><br />
+        @Html.CheckBoxFor(m => m.IsRememberMe)
+        <span></span>
+        @Html.LabelFor(m => m.IsRememberMe)
+        <br />
+        <div class="error-container">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+
+        <input type="submit" class="btn btn-default" value="登陆" />
+    }
+</div>
