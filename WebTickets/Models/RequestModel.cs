@@ -8,7 +8,7 @@ namespace WebTickets
 {
     using SquirrelFramework.Domain.Model;
     [Collection("Request")]
-    class RequestModel : DomainModel
+    public class RequestModel : DomainModel
     {
 
         public String ProblemTitle { set; get; }

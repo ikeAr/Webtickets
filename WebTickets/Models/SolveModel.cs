@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace WebTickets
 {
     [Collection("Solve")]
-    class SolveModel : DomainModel
+    public class SolveModel : DomainModel
     {
 
         public long StartRequesteTime { get; set; }

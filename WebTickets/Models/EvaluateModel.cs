@@ -8,7 +8,7 @@ namespace WebTickets
 {
     using SquirrelFramework.Domain.Model;
     [Collection("Evaluate")]
-    class EvaluateModel : DomainModel
+    public class EvaluateModel : DomainModel
     {
         public String Grade { set; get; }
         public String Comment { set; get; }

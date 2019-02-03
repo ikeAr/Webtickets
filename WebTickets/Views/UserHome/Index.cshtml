@@ -1,7 +1,54 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "维修订单";
 }
-
-<h2>Index</h2>
+@model WebTickets.RequestModel
+<style>
+    .error-container span {
+        display: block;
+    }
+</style>
+<div class="">
+    <h3>订单</h3>
+    <p>请填写</p>
+    @using (Html.BeginForm(
+        "Index", "UserHome",
+        new { ReturnUrl = this.Request.QueryString["ReturnUrl"] },
+        FormMethod.Post))
+    {
+        @Html.LabelFor(m => m.ProblemTitle)
+        <br />
+        @Html.TextBoxFor(m => m.ProblemTitle)
+        <br />
+        @Html.LabelFor(m => m.Screenshots)
+        <br />
+        <input type="file" value="请上传截图" />
+        @Html.LabelFor(m => m.Level)
+        <br />
+        @Html.RadioButtonFor(m => m.Level, "一级")
+        @Html.RadioButtonFor(m => m.Level, "二级")
+        @Html.RadioButtonFor(m => m.Level, "三级")
+        <br />
+        @Html.LabelFor(m => m.Telephone)
+        <br />
+        @Html.TextBoxFor(m => m.Telephone)
+        <br />
+        @Html.LabelFor(m => m.Location)
+        <br />
+        @Html.TextBoxFor(m => m.Location)
+        <br />
+        @Html.LabelFor(m => m.ExpectTime)
+        <br />
+        @Html.TextBoxFor(m => m.ExpectTime)
+        <br />
+        @Html.LabelFor(m => m.Condition)
+        <br />
+        @Html.TextBoxFor(m => m.Condition)
+        <div class="error-container">
+            @Html.ValidationSummary(true, "", new { @class = "danger" })
+        </div>
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+        <input type="submit" class="btn btn-default" value="登陆 "/>
+    }
+</div>
 

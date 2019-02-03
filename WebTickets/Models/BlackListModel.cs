@@ -9,7 +9,7 @@ namespace WebTickets
 
     using SquirrelFramework.Domain.Model;
     [Collection("BlackList")]
-    class BlackListMOdel : UserModel
+    public class BlackListMOdel : UserModel
     {
 
     }
