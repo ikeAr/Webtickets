@@ -210,6 +210,7 @@
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MaintainerController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\UserHomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -224,6 +225,8 @@
     <Compile Include="Models\SolveModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repo\MaintainerRepo.cs" />
+    <Compile Include="Repo\RequestRepo.cs" />
     <Compile Include="Repo\UserRepo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -285,6 +288,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Maintainer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
