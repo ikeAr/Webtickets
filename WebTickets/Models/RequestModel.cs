@@ -11,8 +11,8 @@ namespace WebTickets
     public class RequestModel : DomainModel
     {
 
-        public String ProblemTitle { set; get; }
-        public List<String> Screenshots { set; get; }//string类型的
+        public string ProblemTitle { set; get; }
+        public List<string> Screenshots { set; get; }//string类型的
         public String Level { set; get; }            //类型
         public String Telephone { set; get; }
         public String Location { set; get; }

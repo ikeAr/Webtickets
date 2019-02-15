@@ -22,20 +22,20 @@
             return this.View();
         }
 
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]//跨站脚本攻击
         public ActionResult Login(UserModel newUser, string returnUrl)
         {
             if (this.ModelState.IsValid)
-            { 
+            {
                 newUser.Password = newUser.Password.ToMD5HashCode();
                 var handler = new UserRepo();
-                var user = handler.Get(x => x.RuiJieId==newUser.RuiJieId);
+                var user = handler.Get(x => x.RuiJieId == newUser.RuiJieId);
                 if (user.Password == newUser.Password)
                 {
                     FormsAuthentication.SetAuthCookie(user.Name, newUser.IsRememberMe);
                     return this.CheckReturnUrl(returnUrl)
                         ? this.Redirect(returnUrl)
-                        : this.RedirectToAction("index", "Login") as ActionResult;
+                        : this.RedirectToAction("Index", "Home") as ActionResult;
                 }
                 this.ModelState.AddModelError("", "请检查你的用户名或密码");
             }

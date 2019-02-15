@@ -17,10 +17,10 @@ namespace WebTickets.Controllers
             return View();
         }
 
-        public ActionResult SaveRegisterDate(UserModel newUser)
+        public ActionResult SaveRegisterData(UserModel newUser)
         { 
             newUser.Password = newUser.Password.ToMD5HashCode();
-            newUser.ConfirmPassword = newUser.ConfirmPassword.ToMD5HashCode();
+            //newUser.ConfirmPassword = newUser.ConfirmPassword.ToMD5HashCode();
             var handler = new UserRepo();
             handler.Add(newUser);
             return RedirectToAction("Index", "Home");

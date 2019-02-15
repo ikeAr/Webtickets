@@ -12,5 +12,6 @@ namespace WebTickets
     {
         public String Grade { set; get; }
         public String Comment { set; get; }
+        //creator
     }
 }

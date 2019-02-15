@@ -5,13 +5,13 @@ namespace WebTickets.Controllers
 {
     public class UserHomeController : Controller
     {
+        RequestRepo requestRepo = new RequestRepo();
         // GET: UserHome
         public ActionResult Index(RequestModel newRequestModel)
         {
-            var handler = new RequestRepo();
-            handler.Add(newRequestModel);
-            return RedirectToAction("Index","Home");
+            requestRepo.Add(newRequestModel);
+            return RedirectToAction("Index", "Home");
         }
-      
+
     }
 }

@@ -27,6 +27,10 @@
                     {
                         <li>@Html.ActionLink(Context.User.Identity.Name + " | 退出登陆", "Logout", "Login")</li>
                     }
+                    else
+                    {
+                        <li>@Html.ActionLink("登陆","Index","Login")</li>
+                    }
                 </ul>
             </div>
         </div>

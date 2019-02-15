@@ -11,8 +11,8 @@ namespace WebTickets
     public class SolveModel : DomainModel
     {
 
-        public long StartRequesteTime { get; set; }
-        public long EndRequesteTime { get; set; }
+        public string StartRequesteTime { get; set; }
+        public string EndRequesteTime { get; set; }
         public string MaintainerNumber { get; set; }//用入函数得到工作人员名字
                                                     // public string Background_Administrator_name = 
 
@@ -22,7 +22,7 @@ namespace WebTickets
         public long ProcessingTime { get; set; }//处理时间
 
 
-        public string Sollution { get; set; }
+        public string Solution { get; set; }
     }
 
 }
