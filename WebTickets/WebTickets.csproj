@@ -212,7 +212,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MaintainerController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
-    <Compile Include="Controllers\UserHomeController.cs" />
+    <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -284,7 +284,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
-    <Content Include="Views\UserHome\Index.cshtml" />
+    <Content Include="Views\Request\Index.cshtml" />
     <Content Include="Views\Maintainer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />

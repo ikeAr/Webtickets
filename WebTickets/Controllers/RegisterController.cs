@@ -21,8 +21,8 @@ namespace WebTickets.Controllers
         { 
             newUser.Password = newUser.Password.ToMD5HashCode();
             //newUser.ConfirmPassword = newUser.ConfirmPassword.ToMD5HashCode();
-            var handler = new UserRepo();
-            handler.Add(newUser);
+            var userRepo = new UserRepo();
+            userRepo.Add(newUser);
             return RedirectToAction("Index", "Home");
         }
     }

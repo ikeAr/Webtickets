@@ -9,8 +9,8 @@ namespace WebTickets
     [Collection("User")]
     public class UserModel : DomainModel
     {
-        [DisplayName("Username")]
-        [Required(ErrorMessage = "Please enter your username")]
+        [DisplayName("用户名")]
+        [Required(ErrorMessage = "请输入用户名")]
         public string RuiJieId { get; set; }
         public string Name { get; set; }
         public string Telphone { get; set; }
@@ -21,12 +21,12 @@ namespace WebTickets
         public string Dormitory { get; set; }
 
         public string MacAddress { get; set; }
-        [DisplayName("Password")]
-        [Required(ErrorMessage = "Please enter your password")]
+        [DisplayName("密码")]
+        [Required(ErrorMessage = "请输入密码")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        [DisplayName("Remember me")]
         public string ConfirmPassword { get; set; }
+        [DisplayName("保存密码")]
         public bool IsRememberMe { get; set; }
 
     }

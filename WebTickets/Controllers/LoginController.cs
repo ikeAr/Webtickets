@@ -28,8 +28,8 @@
             if (this.ModelState.IsValid)
             {
                 newUser.Password = newUser.Password.ToMD5HashCode();
-                var handler = new UserRepo();
-                var user = handler.Get(x => x.RuiJieId == newUser.RuiJieId);
+                var userRepo = new UserRepo();
+                var user = userRepo.Get(x => x.RuiJieId == newUser.RuiJieId);
                 if (user.Password == newUser.Password)
                 {
                     FormsAuthentication.SetAuthCookie(user.Name, newUser.IsRememberMe);
