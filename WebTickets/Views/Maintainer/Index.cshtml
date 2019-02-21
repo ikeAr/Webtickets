@@ -1,9 +1,10 @@
-@using WebTickets.Repo;
-@model WebTickets.RequestModel
+﻿
 @{
     ViewBag.Title = "Index";
 }
-
+@*@using System.Collections.Generic.IEnumerable;*@
+@using WebTickets.Repo;
+@model WebTickets.RequestModel
 <table border="1">
     <thead>
         <tr>
@@ -19,9 +20,9 @@
     <tbody>
 
         @{
-            var requestRepo = new RequestRepo();
+            RequestRepo requestRepo = new RequestRepo();
         }
-        @foreach (var request in requestRepo.GetAll())
+        @foreach (RequestModel request in requestRepo.GetAll())
         {
             <tr>
                 <td></td>
