@@ -1,7 +1,5 @@
-﻿
-namespace WebTickets
+﻿namespace WebTickets
 {
-
     using SquirrelFramework.Domain.Model;
     [Collection("Maintainer")]
     public class MaintainerModel : UserModel

@@ -1,8 +1,5 @@
-﻿
-
-namespace WebTickets
+﻿namespace WebTickets
 {
-
     using SquirrelFramework.Domain.Model;
     [Collection("Administrator")]
     public class AdministratorModel : UserModel
@@ -12,6 +9,5 @@ namespace WebTickets
         public string Updater { get; set; }
         public string DifficuiltyGrade { get; set; }
         public string UpdateTime { get; set; }
-
     }
 }

@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WebTickets
+﻿namespace WebTickets
 {
-
     using SquirrelFramework.Domain.Model;
     [Collection("BlackList")]
     public class BlackListMOdel : UserModel
     {
-
     }
 }

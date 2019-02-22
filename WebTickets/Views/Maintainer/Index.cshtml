@@ -7,13 +7,13 @@
 <table border="1">
     <thead>
         <tr>
-            <td>问题描述</td>
-            <td>锐捷提示截图</td>
-            <td>紧急情况</td>
-            <td>联系电话</td>
-            <td>所在位置</td>
-            <td>期待处理时间</td>
-            <td>处理状态</td>
+            <td>@Html.LabelFor(m => m.ProblemTitle)</td>
+            <td>@Html.LabelFor(m => m.Screenshots)</td>
+            <td>@Html.LabelFor(m => m.Level)</td>
+            <td>@Html.LabelFor(m => m.Telephone)</td>
+            <td>@Html.LabelFor(m => m.Location)</td>
+            <td>@Html.LabelFor(m => m.ExpectTime)</td>
+            <td>@Html.LabelFor(m => m.Condition)</td>
         </tr>
     </thead>
     <tbody>
@@ -24,13 +24,13 @@
         @foreach (var request in requestRepo.GetAll())
         {
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>@request.ProblemTitle</td>
+                <td>@request.Screenshots</td>
+                <td>@request.Level</td>
+                <td>@request.Telephone</td>
+                <td>@request.Location</td>
+                <td>@request.ExpectTime</td>
+                <td>@request.Condition</td>
             </tr>
         }
 
