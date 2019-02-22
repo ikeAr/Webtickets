@@ -1,12 +1,12 @@
-@using WebTickets.Repo;
+﻿@using WebTickets.Repo;
 @model WebTickets.RequestModel
 @{
     ViewBag.Title = "Index";
 }
-
 <table border="1">
     <thead>
         <tr>
+            <td>@Html.LabelFor(m => m.UserName)</td>
             <td>@Html.LabelFor(m => m.ProblemTitle)</td>
             <td>@Html.LabelFor(m => m.Screenshots)</td>
             <td>@Html.LabelFor(m => m.Level)</td>
@@ -16,23 +16,37 @@
             <td>@Html.LabelFor(m => m.Condition)</td>
         </tr>
     </thead>
-    <tbody>
 
+    <tbody>
         @{
             var requestRepo = new RequestRepo();
         }
         @foreach (var request in requestRepo.GetAll())
         {
-            <tr>
-                <td>@request.ProblemTitle</td>
-                <td>@request.Screenshots</td>
-                <td>@request.Level</td>
-                <td>@request.Telephone</td>
-                <td>@request.Location</td>
-                <td>@request.ExpectTime</td>
-                <td>@request.Condition</td>
-            </tr>
-        }
 
+        <tr>
+            <td>@request.UserName</td>
+            <td>@request.ProblemTitle</td>
+            <td>@request.Screenshots</td>
+            <td>@request.Level</td>
+            <td>@request.Telephone</td>
+            <td>@request.Location</td>
+            <td>@request.ExpectTime</td>
+            <td id="Condition">@request.Condition</td>
+            <td><input type="button" id="acceptTicket" value="接受订单" /></td>
+        </tr>
+        }
     </tbody>
 </table>
+<script>
+    document.getElementById("acceptTicket").onclick = function () {
+        document.getElementById("Condition").innerHTML ="已接单"
+    };
+    var condition = document.getElementById("Condition").innerHTML;
+    if (condition == 0) {
+        document.getElementById("Condition").innerHTML = "待处理";
+    } else if (condition == 1)
+    {
+        document.getElementById("Condition").innerHTML = "已处理";
+    }
+</script>

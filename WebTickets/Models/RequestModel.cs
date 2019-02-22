@@ -7,6 +7,8 @@ namespace WebTickets
     [Collection("Request")]
     public class RequestModel : DomainModel
     {
+        [DisplayName("报修人")]
+        public string UserName { set; get; }
         [DisplayName("问题描述")]
         public string ProblemTitle { set; get; }
         [DisplayName("锐捷提示截图")]
