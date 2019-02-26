@@ -8,45 +8,58 @@
         <tr>
             <td>@Html.LabelFor(m => m.UserName)</td>
             <td>@Html.LabelFor(m => m.ProblemTitle)</td>
-            <td>@Html.LabelFor(m => m.Screenshots)</td>
+            <td>@Html.LabelFor(m => m.Image)</td>
             <td>@Html.LabelFor(m => m.Level)</td>
             <td>@Html.LabelFor(m => m.Telephone)</td>
             <td>@Html.LabelFor(m => m.Location)</td>
             <td>@Html.LabelFor(m => m.ExpectTime)</td>
+            <td>@Html.LabelFor(m => m.Maintainer)</td>
             <td>@Html.LabelFor(m => m.Condition)</td>
         </tr>
     </thead>
-
     <tbody>
         @{
             var requestRepo = new RequestRepo();
         }
-        @foreach (var request in requestRepo.GetAll())
+        @foreach (var request in requestRepo.GetAll(x => x.Condition == 0))
         {
-
-        <tr>
-            <td>@request.UserName</td>
-            <td>@request.ProblemTitle</td>
-            <td>@request.Screenshots</td>
-            <td>@request.Level</td>
-            <td>@request.Telephone</td>
-            <td>@request.Location</td>
-            <td>@request.ExpectTime</td>
-            <td id="Condition">@request.Condition</td>
-            <td><input type="button" id="acceptTicket" value="接受订单" /></td>
-        </tr>
+            <tr>
+                <td>@request.UserName</td>
+                <td>@request.ProblemTitle</td>
+                <td>@request.Image</td>
+                <td>@request.Level</td>
+                <td>@request.Telephone</td>
+                <td>@request.Location</td>
+                <td>@request.ExpectTime</td>
+                <td><input type="text" id="M-@request.Id" /></td>
+                <td class="condition" id="Condition-@request.Id" value="">@request.Condition</td>
+                @*<td><input type="button" id="acceptTicket" data-id="@request.Id" value="接受订单" /></td>*@
+                <td><a href="/Maintainer/UpdateStatus?id=@request.Id&condition=1" data-id="@request.Id">接受订单</a></td>
+            </tr>
         }
     </tbody>
 </table>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous">
+</script>
+
 <script>
-    document.getElementById("acceptTicket").onclick = function () {
-        document.getElementById("Condition").innerHTML ="已接单"
-    };
-    var condition = document.getElementById("Condition").innerHTML;
-    if (condition == 0) {
-        document.getElementById("Condition").innerHTML = "待处理";
-    } else if (condition == 1)
-    {
-        document.getElementById("Condition").innerHTML = "已处理";
-    }
+
+    $(".condition").each(function (i, e) {//两个参数
+        debugger;
+        if (e.innerHTML == "0") {
+            e.innerHTML = "待处理";
+        }
+    })
+    //document.getElementById("acceptTicket").onclick = function () {
+    //    document.getElementById("Condition").innerHTML ="已接单"
+    //};
+    //var condition = document.getElementById("Condition").innerHTML;
+    //if (condition == 0) {
+    //    document.getElementById("Condition").innerHTML = "待处理";
+    //} else if (condition == 1)
+    //{
+    //    document.getElementById("Condition").innerHTML = "已处理";
+    //}
 </script>

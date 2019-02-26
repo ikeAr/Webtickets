@@ -3,22 +3,24 @@
 namespace WebTickets.Controllers
 {
     [AllowAnonymous]
-    public class HomeController : Controller
+    public class HomeController : ControllerBase
     {
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
 
+        public ActionResult Problem()
+        {
             return View();
         }
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
+        public ActionResult Advice()
+        {
+            return View();
+        }
+        public ActionResult News()
+        {
             return View();
         }
     }

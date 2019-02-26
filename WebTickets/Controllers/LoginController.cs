@@ -15,7 +15,7 @@
     #endregion using directives
 
     [AllowAnonymous]
-    public class LoginController : Controller
+    public class LoginController : ControllerBase
     {
         public ActionResult Index()
         {
@@ -32,7 +32,7 @@
                 var user = userRepo.Get(x => x.RuiJieId == newUser.RuiJieId);
                 if (user.Password == newUser.Password)
                 {
-                    FormsAuthentication.SetAuthCookie(user.Name, newUser.IsRememberMe);
+                    SetAuthCookie(user.Name, newUser.IsRememberMe, user);
                     return this.CheckReturnUrl(returnUrl)
                         ? this.Redirect(returnUrl)
                         : this.RedirectToAction("Index", "Home") as ActionResult;
@@ -64,6 +64,48 @@
             return url[0] == '/' && (url.Length == 1
                                      || url[1] != '/' && url[1] != '\\')
                    || url.Length > 1 && url[0] == '~' && url[1] == '/';
+        }
+
+        private static void SetAuthCookie(string userName, bool createPersistentCookie, object userData)
+        {
+            if (!System.Web.HttpContext.Current.Request.IsSecureConnection && FormsAuthentication.RequireSSL)
+            {
+                throw new HttpException("Connectin not secure creating secure cookie");
+            }
+            FormsAuthentication.Initialize();
+            if (userName == null)
+            {
+                userName = string.Empty;
+            }
+
+            var cookiePath = FormsAuthentication.FormsCookiePath;
+            var utcNow = DateTime.UtcNow;
+            var expirationUtc = utcNow + FormsAuthentication.Timeout;
+            var authenticationTicket = new FormsAuthenticationTicket(2, userName, utcNow.ToLocalTime(), expirationUtc.ToLocalTime(), createPersistentCookie, JsonConvert.SerializeObject(userData), cookiePath);
+
+            var encryptedTicket = FormsAuthentication.Encrypt(authenticationTicket);
+            if (string.IsNullOrEmpty(encryptedTicket))
+            {
+                throw new HttpException("Unable to encrypt cookie ticket");
+            }
+
+            var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket)
+            {
+                HttpOnly = true,
+                Path = cookiePath,
+                Secure = FormsAuthentication.RequireSSL
+            };
+
+            if (FormsAuthentication.CookieDomain != null)
+            {
+                authCookie.Domain = FormsAuthentication.CookieDomain;
+            }
+            if (authenticationTicket.IsPersistent)
+            {
+                authCookie.Expires = authenticationTicket.Expiration;
+            }
+
+            System.Web.HttpContext.Current.Response.Cookies.Add(authCookie);
         }
     }
 }

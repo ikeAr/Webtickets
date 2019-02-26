@@ -5,7 +5,7 @@ using WebTickets.Repo;
 namespace WebTickets.Controllers
 {
     [AllowAnonymous]
-    public class RegisterController : Controller
+    public class RegisterController : ControllerBase
     {
         // GET: Register
         public ActionResult Index()

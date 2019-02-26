@@ -4,6 +4,6 @@
     {
         Maintainner,
         User,
-        Administator,
+        //Administator,
     }
 }

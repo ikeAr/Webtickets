@@ -208,6 +208,7 @@
     <Compile Include="Config\redis.cs">
       <DependentUpon>redis.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MaintainerController.cs" />
@@ -230,10 +231,29 @@
     <Compile Include="Repo\UserRepo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\about-image.jpg" />
+    <Content Include="Content\advice.jpg" />
+    <Content Include="Content\author-image1.jpg" />
+    <Content Include="Content\author-image2.jpg" />
+    <Content Include="Content\blog-image1.jpg" />
+    <Content Include="Content\blog-image2.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\comment-image1.jpg" />
+    <Content Include="Content\comment-image2.jpg" />
+    <Content Include="Content\dalianschool.jpg" />
+    <Content Include="Content\dingdan.jpg" />
+    <Content Include="Content\logo99.jpg" />
+    <Content Include="Content\navlogo.jpg" />
+    <Content Include="Content\personal.jpg" />
+    <Content Include="Content\question.jpg" />
+    <Content Include="Content\schooldalian.jpg" />
+    <Content Include="Content\secret.jpg" />
+    <Content Include="Content\single-project-img.jpg" />
+    <Content Include="Content\Supermen.jpg" />
+    <Content Include="Content\teacher.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -279,13 +299,15 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Problem.cshtml" />
+    <Content Include="Views\Home\Advice.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Request\Index.cshtml" />
     <Content Include="Views\Maintainer\Index.cshtml" />
+    <Content Include="Views\Maintainer\Introduction.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

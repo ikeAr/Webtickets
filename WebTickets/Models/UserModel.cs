@@ -3,6 +3,8 @@
     using SquirrelFramework.Domain.Model;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+    using WebTickets.Models;
+
     [Collection("User")]
     public class UserModel : DomainModel
     {
@@ -21,5 +23,6 @@
         public string ConfirmPassword { get; set; }
         [DisplayName("保存密码")]
         public bool IsRememberMe { get; set; }
+        public Role Role { get; set; }
     }
 }
