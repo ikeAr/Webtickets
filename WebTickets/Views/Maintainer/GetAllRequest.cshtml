@@ -1,0 +1,53 @@
+﻿@using WebTickets.Repo;
+@model WebTickets.RequestModel
+@{
+    ViewBag.Title = "GetAllRequest";
+}
+
+<h2>GetAllRequest</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <td>@Html.LabelFor(m => m.UserName)</td>
+            <td>@Html.LabelFor(m => m.ProblemTitle)</td>
+            <td>@Html.LabelFor(m => m.Image)</td>
+            <td>@Html.LabelFor(m => m.Level)</td>
+            <td>@Html.LabelFor(m => m.Telephone)</td>
+            <td>@Html.LabelFor(m => m.Location)</td>
+            <td>@Html.LabelFor(m => m.ExpectTime)</td>
+            <td>@Html.LabelFor(m => m.Maintainer)</td>
+            <td>@Html.LabelFor(m => m.Condition)</td>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var requestRepo = new RequestRepo();
+        }
+        @foreach (var request in requestRepo.GetAll())
+        {
+            <tr>
+                <td>@request.UserName</td>
+                <td>@request.ProblemTitle</td>
+                <td>@request.Image</td>
+                <td>@request.Level</td>
+                <td>@request.Telephone</td>
+                <td>@request.Location</td>
+                <td>@request.ExpectTime</td>
+                <td>@request.Maintainer</td>
+                <td class="condition" id="Condition-@request.Id" value="">@request.Condition</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts{
+    <script>
+        $(".condition").each(function (i, e) {//两个参数
+            debugger;
+            if (e.innerHTML == "0") {
+                e.innerHTML = "待处理";
+            } else if (e.innerHTML == '1') {
+                e.innerHTML = "已处理";
+            }
+        })
+    </script>
+}
