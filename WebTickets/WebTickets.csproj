@@ -214,6 +214,7 @@
     <Compile Include="Controllers\MaintainerController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -308,6 +309,8 @@
     <Content Include="Views\Maintainer\Index.cshtml" />
     <Content Include="Views\Maintainer\Introduction.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Maintainer\GetAllRequest.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

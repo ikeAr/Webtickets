@@ -7,20 +7,29 @@ namespace WebTickets.Controllers
     {
         // GET: Maintainer
         public ActionResult Index()
-        {         
+        {
             return View();
         }
 
-        public ActionResult UpdateStatus(string id, int condition)
+        public ActionResult UpdateStatus(string id, int condition, string maintainerId)
         {
             var requestRepo = new RequestRepo();
             var ticket = requestRepo.Get(id);
+            var userRepo = new UserRepo();
+            var maintainer = userRepo.Get(x => x.Id == maintainerId);
+            ticket.Maintainer = maintainer.Name;
             ticket.Condition = condition;
-            requestRepo.Update(ticket);
+            requestRepo.Update(ticket);            
+            //ViewBag.maintainerName = maintainer.Name;
             //return this.Json("success",JsonRequestBehavior.AllowGet);
             return View("Index");
         }
+
         public ActionResult Introduction()
+        {
+            return View();
+        }
+        public ActionResult GetAllRequest()
         {
             return View();
         }
