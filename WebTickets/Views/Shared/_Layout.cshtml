@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using WebTickets.Models;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -24,14 +25,14 @@
                     <li>@Html.ActionLink("注册一个", "Index", "Register")</li>
                     @if (Context.User.Identity.IsAuthenticated)
                     {
-                        if (ViewBag.CurrentUser.Role == 0)
+                        if (ViewBag.CurrentUser.Role == Role.Maintainner)
                         {
                             <li>@Html.ActionLink("待处理订单", "index", "Maintainer")</li>
                             <Li>@Html.ActionLink("所有订单", "GetAllRequest", "Maintainer")</Li>
                         }
                         else
                         {
-                            <li>@Html.ActionLink("历史订单", "Index", "User")</li> 
+                            <li>@Html.ActionLink("历史订单", "Index", "User")</li>
                         }
                         <li>@Html.ActionLink(Context.User.Identity.Name + " | 退出登陆", "Logout", "Login")</li>
                     }

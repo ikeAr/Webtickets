@@ -2,8 +2,8 @@
 {
     public enum Role
     {
-        Maintainner,
         User,
+        Maintainner,     
         //Administator,
     }
 }
