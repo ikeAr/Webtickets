@@ -1,30 +1,25 @@
 ﻿<h1>欢迎注册</h1>
 <form action="/Register/SaveRegisterData" method="post">
-    <label>角色</label>
-    <select name="Role">
-        <option value="0">维修骑士</option>
-        <option value="1">用户</option>
-    </select><br />
     <label>姓名</label>
-    <input type="text" name="Name" /><br />
+    <input type="text" name="Name" /><br /><br />
     <label>性别</label>
     <input type="radio" name="Gender" value="男" />男
-    <input type="radio" name="Gender" value="女" />女<br />
+    <input type="radio" name="Gender" value="女" />女<br /><br />
     <label>学号或工号</label>
-    <input type="number" name="RuijieId" id="ruijieId" /><br />
+    <input type="text" name="RuijieId" id="ruijieId" /><br />
     <span id="ruijieId-error-massage" style="color: #FF0000; display: none">您输入的用户名已存在，请重新输入</span><br />
     <label>密码</label>
-    <input type="password" name="Password" id="password" /><br />
+    <input type="password" name="Password" id="password" /><br /><br />
     <label>确认密码</label>
     <input type="password" id="confirmPassword" /><br />
     <span id="password-error-massage" style="color: #FF0000; display: none">您输入的确认密码与密码不一致，请重新输入</span><br />
     <label>移动电话</label>
-    <input type="tel" name="Telphone" /><br />
+    <input type="tel" name="Telphone" /><br /><br />
     <label>楼宇和房间号</label>
-    <input type="text" name="Dormitory" value="B座218" /><br />
+    <input type="text" name="Dormitory" value="B座218" /><br /><br />
     <label>Mac地址</label>
-    <input type="text" name="MacAddress" /><br />
-    <input type="submit" value="注册" /><br>
+    <input type="text" name="MacAddress" /><br /><br />
+    <input type="submit" id="submit" value="注册" /><br>
 </form>
 @section scripts{
     <script>
@@ -34,12 +29,14 @@
                 $.ajax(
                     {
                         type: "GET",
-                        url:"/Register/CheckData?ruijieId=" + ruijieId,
+                        url: "/Register/CheckData?ruijieId=" + ruijieId,
                         success: function (result) {
                             if (result) {
                                 $("#ruijieId-error-massage").show();
+                                $("#submit").hide();
                             } else {
                                 $("#ruijieId-error-massage").hide();
+                                $("#submit").show();
                             }
                         },
                         error: function (result) {
@@ -53,13 +50,12 @@
                 var confirmPassword = $("#confirmPassword").val();
                 if (password != confirmPassword) {
                     $("#password-error-massage").show();
+                    $("#submit").hide();
                 } else {
                     $("#password-error-massage").hide();
+                    $("#submit").show();
                 }
             })
         })
     </script>
-
-
-
 }
