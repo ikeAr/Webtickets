@@ -20,7 +20,6 @@
         [Required(ErrorMessage = "请输入密码")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public string ConfirmPassword { get; set; }
         [DisplayName("保存密码")]
         public bool IsRememberMe { get; set; }
         public Role Role { get; set; }

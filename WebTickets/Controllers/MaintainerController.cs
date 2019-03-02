@@ -20,7 +20,6 @@ namespace WebTickets.Controllers
             ticket.Maintainer = maintainer.Name;
             ticket.Condition = condition;
             requestRepo.Update(ticket);            
-            //ViewBag.maintainerName = maintainer.Name;
             //return this.Json("success",JsonRequestBehavior.AllowGet);
             return View("Index");
         }

@@ -11,11 +11,13 @@
     <input type="radio" name="Gender" value="男" />男
     <input type="radio" name="Gender" value="女" />女<br />
     <label>学号或工号</label>
-    <input type="number" name="RuijieId" /><br />
+    <input type="number" name="RuijieId" id="ruijieId" /><br />
+    <span id="ruijieId-error-massage" style="color: #FF0000; display: none">您输入的用户名已存在，请重新输入</span><br />
     <label>密码</label>
-    <input type="password" name="Password" /><br />
+    <input type="password" name="Password" id="password" /><br />
     <label>确认密码</label>
-    <input type="password" name="ConfirmPassword" /><br />
+    <input type="password" id="confirmPassword" /><br />
+    <span id="password-error-massage" style="color: #FF0000; display: none">您输入的确认密码与密码不一致，请重新输入</span><br />
     <label>移动电话</label>
     <input type="tel" name="Telphone" /><br />
     <label>楼宇和房间号</label>
@@ -24,3 +26,40 @@
     <input type="text" name="MacAddress" /><br />
     <input type="submit" value="注册" /><br>
 </form>
+@section scripts{
+    <script>
+        $(function () {
+            $("#ruijieId").blur(function () {
+                var ruijieId = $("#ruijieId").val();
+                $.ajax(
+                    {
+                        type: "GET",
+                        url:"/Register/CheckData?ruijieId=" + ruijieId,
+                        success: function (result) {
+                            if (result) {
+                                $("#ruijieId-error-massage").show();
+                            } else {
+                                $("#ruijieId-error-massage").hide();
+                            }
+                        },
+                        error: function (result) {
+                            alert("网络异常，通讯失败")
+                        }
+                    }
+                );
+            });
+            $("#confirmPassword").blur(function () {
+                var password = $("#password").val();
+                var confirmPassword = $("#confirmPassword").val();
+                if (password != confirmPassword) {
+                    $("#password-error-massage").show();
+                } else {
+                    $("#password-error-massage").hide();
+                }
+            })
+        })
+    </script>
+
+
+
+}

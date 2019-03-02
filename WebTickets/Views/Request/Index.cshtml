@@ -19,13 +19,17 @@
         <br />
         @Html.TextBoxFor(m => m.UserName)
         <br />
+        @Html.LabelFor(m => m.StudentId)
+        <br />
+        @Html.TextBoxFor(m => m.StudentId)
+        <br />
         @Html.LabelFor(m => m.ProblemTitle)
         <br />
         @Html.TextBoxFor(m => m.ProblemTitle)
         <br />
         @Html.LabelFor(m => m.Image)
         <br />
-        <input type="file" value="请上传截图"  name="ImageFile" required />
+        <input type="file" value="请上传截图" name="ImageFile" required />
         @Html.LabelFor(m => m.Level)
         <br />
         @Html.RadioButtonFor(m => m.Level, "一级")

@@ -6,6 +6,7 @@
 <table border="1">
     <thead>
         <tr>
+            <td>@Html.LabelFor(m => m.StudentId)</td>
             <td>@Html.LabelFor(m => m.UserName)</td>
             <td>@Html.LabelFor(m => m.ProblemTitle)</td>
             <td>@Html.LabelFor(m => m.Image)</td>
@@ -15,7 +16,6 @@
             <td>@Html.LabelFor(m => m.ExpectTime)</td>
             <td>@Html.LabelFor(m => m.Maintainer)</td>
             <td>@Html.LabelFor(m => m.Condition)</td>
-            @*@ViewBag.CurrenUser.Name*@
         </tr>
     </thead>
     <tbody>
@@ -23,9 +23,10 @@
             var requestRepo = new RequestRepo();
             var user = (UserModel)ViewBag.CurrentUser;
         }
-        @foreach (var request in requestRepo.GetAll(x => x.UserName ==user.Name))
+        @foreach (var request in requestRepo.GetAll(x => x.StudentId == user.RuiJieId))
         {
             <tr>
+                <td>@request.StudentId</td>
                 <td>@request.UserName</td>
                 <td>@request.ProblemTitle</td>
                 <td>@request.Image</td>

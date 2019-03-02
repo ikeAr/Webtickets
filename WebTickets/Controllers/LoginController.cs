@@ -13,10 +13,10 @@
     using System.Web.Security;
     using Newtonsoft.Json;
     #endregion using directives
-
     [AllowAnonymous]
     public class LoginController : ControllerBase
     {
+        UserRepo userRepo = new UserRepo();
         public ActionResult Index()
         {
             return this.View();
@@ -28,7 +28,6 @@
             if (this.ModelState.IsValid)
             {
                 newUser.Password = newUser.Password.ToMD5HashCode();
-                var userRepo = new UserRepo();
                 var user = userRepo.Get(x => x.RuiJieId == newUser.RuiJieId);
                 if (user.Password == newUser.Password)
                 {
@@ -41,7 +40,18 @@
             }
             return this.View("Index", newUser);
         }
-
+        public ActionResult CheckLoginData(string ruijieId)
+        {
+            if ((userRepo.GetCount(x => x.RuiJieId == ruijieId) == 0))
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+           
+        }
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();

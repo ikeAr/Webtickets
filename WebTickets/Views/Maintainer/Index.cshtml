@@ -6,6 +6,7 @@
 <table border="1">
     <thead>
         <tr>
+            <td>@Html.LabelFor(m => m.StudentId)</td>
             <td>@Html.LabelFor(m => m.UserName)</td>
             <td>@Html.LabelFor(m => m.ProblemTitle)</td>
             <td>@Html.LabelFor(m => m.Image)</td>
@@ -22,17 +23,18 @@
         }
         @foreach (var request in requestRepo.GetAll(x => x.Condition == 0))
         {
-            <tr>
-                <td>@request.UserName</td>
-                <td>@request.ProblemTitle</td>
-                <td>@request.Image</td>
-                <td>@request.Level</td>
-                <td>@request.Telephone</td>
-                <td>@request.Location</td>
-                <td>@request.ExpectTime</td>
-                <td class="condition" id="Condition-@request.Id" value="">@request.Condition</td>
-                <td><a href="/Maintainer/UpdateStatus?id=@request.Id&condition=1&maintainerId=@ViewBag.CurrentUser.Id" data-id="@request.Id">接受订单</a></td>
-            </tr>
+        <tr>
+            <td>@request.StudentId</td>
+            <td>@request.UserName</td>
+            <td>@request.ProblemTitle</td>
+            <td>@request.Image</td>
+            <td>@request.Level</td>
+            <td>@request.Telephone</td>
+            <td>@request.Location</td>
+            <td>@request.ExpectTime</td>
+            <td class="condition" id="Condition-@request.Id" value="">@request.Condition</td>
+            <td><a href="/Maintainer/UpdateStatus?id=@request.Id&condition=1&maintainerId=@ViewBag.CurrentUser.Id" data-id="@request.Id">接受订单</a></td>
+        </tr>
         }
     </tbody>
 </table>

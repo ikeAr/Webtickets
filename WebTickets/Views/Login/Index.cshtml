@@ -8,9 +8,9 @@
         margin: 10px 0;
     }
 
-    .error-container span {
-        display: block;
-    }
+        .error-container span {
+            display: block;
+        }
 
     .text-danger {
         color: #ff0000;
@@ -29,11 +29,12 @@
     {
         @Html.LabelFor(m => m.RuiJieId)
         <br />
-        @Html.TextBoxFor(m => m.RuiJieId)
-        <br /><br />
+        @Html.TextBoxFor(m => m.RuiJieId, new { id = "ruijieId" })
+        <br />
+        <span id="ruijieId-error-files" style="color: #FF0000; display: none">你输入的用户名不存在，请重新输入</span><br />
         @Html.LabelFor(m => m.Password)
         <br />
-        @Html.PasswordFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { id = "password" })
         <br /><br />
         @Html.CheckBoxFor(m => m.IsRememberMe)
         <span></span>
@@ -52,3 +53,27 @@
         @Html.ActionLink("注册", "index", "Register");
     }
 </div>
+@section scripts{
+    <script>
+        $(function () {
+            $("#ruijieId").blur(function () {
+                var ruijieId = $("#ruijieId").val();
+                $.ajax(
+                    {
+                        type: "GET",
+                        url: "/Login/CheckLoginData?ruijieId=" + ruijieId,
+                        success: function (result) {
+                            if (result) {
+                                $("#ruijieId-error-files").show();
+                            } else {
+                                $("#ruijieId-error-files").hide();
+                            }
+                        },
+                        error: function (result) {
+                            alert("网络异常，通讯失败");
+                        }
+                    });
+            });
+        })
+    </script>
+    }

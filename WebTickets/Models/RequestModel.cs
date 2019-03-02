@@ -13,6 +13,8 @@ namespace WebTickets
         //}
         [DisplayName("报修人")]
         public string UserName { set; get; }
+        [DisplayName("学号")]
+        public string StudentId { get; set; }
         [DisplayName("问题描述")]
         public string ProblemTitle { set; get; }
         [DisplayName("锐捷提示截图")]
