@@ -25,10 +25,23 @@
                     <li>@Html.ActionLink("注册一个", "Index", "Register")</li>
                     @if (Context.User.Identity.IsAuthenticated)
                     {
-                        if (ViewBag.CurrentUser.Role == Role.Maintainner)
+                        if (ViewBag.CurrentUser.Role == Role.Maintainner || ViewBag.CurrentUser.Role == Role.Teacher || ViewBag.CurrentUser.Role == Role.Administrator)
                         {
                             <li>@Html.ActionLink("待处理订单", "index", "Maintainer")</li>
                             <Li>@Html.ActionLink("所有订单", "GetAllRequest", "Maintainer")</Li>
+                            if (ViewBag.CurrentUser.Role == Role.Maintainner)
+                            {
+                                <li>@Html.ActionLink("已接订单", "GetRequest", "Maintainer")</li>
+                            }
+                            if (ViewBag.CurrentUser.Role == Role.Teacher || ViewBag.CurrentUser.Role == Role.Administrator)
+                            {
+                                <li>@Html.ActionLink("审核网信员", "AuditUser", "Teacher")</li>
+                                <li>@Html.ActionLink("审核报修单", "AuditRequest", "Teacher")</li>
+                                if (ViewBag.CurrentUser.Role == Role.Administrator)
+                                {
+                                    <li>@Html.ActionLink("添加老师", "index", "Administrator")</li>
+                                }
+                            }
                         }
                         else
                         {
@@ -40,7 +53,6 @@
                     {
                         <li>@Html.ActionLink("我要登陆", "Index", "Login")</li>
                     }
-
                 </ul>
             </div>
         </div>

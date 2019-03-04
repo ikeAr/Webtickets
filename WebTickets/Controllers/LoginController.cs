@@ -40,9 +40,10 @@
             }
             return this.View("Index", newUser);
         }
+
         public ActionResult CheckLoginData(string ruijieId)
         {
-            if ((userRepo.GetCount(x => x.RuiJieId == ruijieId) == 0))
+            if ((userRepo.GetCount(x => x.RuiJieId == ruijieId) == 0) && (userRepo.Get(x => x.RuiJieId == ruijieId).AuditStatus == Models.AuditStatus.Unauthorized))
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
@@ -50,7 +51,7 @@
             {
                 return Json(false, JsonRequestBehavior.AllowGet);
             }
-           
+
         }
         public ActionResult Logout()
         {

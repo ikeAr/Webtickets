@@ -3,6 +3,5 @@
     using SquirrelFramework.Repository;
     public class UserRepo : RepositoryBase<UserModel>
     {
-    }
-    
+    }  
 }

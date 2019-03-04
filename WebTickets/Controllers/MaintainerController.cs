@@ -28,6 +28,12 @@ namespace WebTickets.Controllers
         {
             return View();
         }
+
+        public ActionResult GetRequest()
+        {
+            return View();
+        }
+
         public ActionResult GetAllRequest()
         {
             return View();

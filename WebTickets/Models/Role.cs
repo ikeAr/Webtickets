@@ -3,7 +3,8 @@
     public enum Role
     {
         User,
-        Maintainner,     
-        //Administator,
+        Maintainner, 
+        Teacher,
+        Administrator
     }
 }

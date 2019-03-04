@@ -8,14 +8,13 @@
     [Collection("User")]
     public class UserModel : DomainModel
     {
-        [DisplayName("用户名")]
+        [DisplayName("用户名(学号或工号)")]
         [Required(ErrorMessage = "请输入用户名")]
         public string RuiJieId { get; set; }
         public string Name { get; set; }
         public string Telphone { get; set; }
+        public string CollegeClass { get; set; }
         public string Gender { get; set; }
-        public string Dormitory { get; set; }
-        public string MacAddress { get; set; }
         [DisplayName("密码")]
         [Required(ErrorMessage = "请输入密码")]
         [DataType(DataType.Password)]
@@ -23,5 +22,6 @@
         [DisplayName("保存密码")]
         public bool IsRememberMe { get; set; }
         public Role Role { get; set; }
+        public AuditStatus AuditStatus { get; set; }
     }
 }
