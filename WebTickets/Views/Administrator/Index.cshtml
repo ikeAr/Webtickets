@@ -1,0 +1,29 @@
+﻿@model WebTickets.Models.TeacherModel
+@using (Html.BeginForm(
+    "Index", "Administrator", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.TeacherName)
+    <br />
+    @Html.TextBoxFor(m => m.TeacherName)
+    <br />
+    @Html.LabelFor(m => m.JobNumber)
+    <br />
+    @Html.TextBoxFor(m => m.JobNumber)
+    <br />
+    @Html.LabelFor(m => m.Password)
+    <br />
+    @Html.PasswordFor(m => m.Password)
+    <br />
+    @Html.LabelFor(m => m.TelePhone)
+    <br />
+    @Html.TextBoxFor(m => m.TelePhone)
+    <br />
+    @Html.LabelFor(m => m.MobilePhone)
+    <br />
+    @Html.TextBoxFor(m => m.MobilePhone)
+    <br />
+    @Html.LabelFor(m => m.role)
+    @Html.RadioButtonFor(m => m.role, "3")
+    <br />
+    <input type="submit" value="提交" />
+}
