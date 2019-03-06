@@ -1,6 +1,31 @@
 ﻿@model WebTickets.UserModel
-@using (Html.BeginForm(
-    "AuditUser", "Teacher", FormMethod.Post))
-{
-
-}
+@using WebTickets.Repo;
+<table border="1">
+    <thead>
+        <tr>
+            <td>@Html.LabelFor(m => m.RuiJieId)</td>
+            <td>@Html.LabelFor(m => m.Name)</td>
+            <td>@Html.LabelFor(m => m.Gender)</td>
+            <td>@Html.LabelFor(m => m.CollegeClass)</td>
+            <td>@Html.LabelFor(m => m.MobilePhone)</td>
+            <td>@Html.LabelFor(m => m.Role)</td>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var userRepo = new UserRepo();
+        }
+        @foreach (var user in userRepo.GetAll(x => x.AuditStatus == 0))
+        {
+            <tr>
+                <td>@user.RuiJieId</td>
+                <td>@user.Name</td>
+                <td>@user.Gender</td>
+                <td>@user.CollegeClass</td>
+                <td>@user.MobilePhone</td>
+                <td>@user.Role</td>
+                <td><a href="/Teacher/SaveAuditUser?id=@user.Id&auditStatus=1">通过</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

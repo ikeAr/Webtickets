@@ -11,10 +11,8 @@ namespace WebTickets.Controllers
     public class AdministratorController : ControllerBase
     {
         // GET: Administrator
-        TeacherRepo teacherRepo = new TeacherRepo();
-        public ActionResult Index(TeacherModel teacher)
+        public ActionResult Index()
         {
-            teacherRepo.Add(teacher);
             return View();
         }
     }

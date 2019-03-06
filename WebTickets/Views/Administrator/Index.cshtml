@@ -1,19 +1,21 @@
-﻿@model WebTickets.Models.TeacherModel
+﻿@model WebTickets.UserModel
 @using (Html.BeginForm(
-    "Index", "Administrator", FormMethod.Post))
+    "SaveRegisterData", "Register", FormMethod.Post))
 {
-    @Html.LabelFor(m => m.TeacherName)
+    @Html.LabelFor(m => m.Name)
     <br />
-    @Html.TextBoxFor(m => m.TeacherName)
+    @Html.TextBoxFor(m => m.Name)
     <br />
-    @Html.LabelFor(m => m.JobNumber)
+    @Html.LabelFor(m => m.RuiJieId)
     <br />
-    @Html.TextBoxFor(m => m.JobNumber)
+    @Html.TextBoxFor(m => m.RuiJieId)
     <br />
     @Html.LabelFor(m => m.Password)
     <br />
     @Html.PasswordFor(m => m.Password)
     <br />
+    <lable>确认密码</lable><br />
+    <input type="password" id="confirmPassword" /><br />
     @Html.LabelFor(m => m.TelePhone)
     <br />
     @Html.TextBoxFor(m => m.TelePhone)
@@ -22,8 +24,26 @@
     <br />
     @Html.TextBoxFor(m => m.MobilePhone)
     <br />
-    @Html.LabelFor(m => m.role)
-    @Html.RadioButtonFor(m => m.role, "3")
-    <br />
+    <input id="Role" name="Role" value="2" />
+    <input id="auditUser" name="AuditStatus" value="1" />
     <input type="submit" value="提交" />
+}
+@section scripts{
+    <script>
+        $(function () {
+            $("#Role").hide();
+            $("#auditUser").hide();
+            $("#confirmPassword").blur(function () {
+                var password = $("#password").val();
+                var confirmPassword = $("#confirmPassword").val();
+                if (password != confirmPassword) {
+                    $("#password-error-massage").show();
+                    $("#submit").hide();
+                } else {
+                    $("#password-error-massage").hide();
+                    $("#submit").show();
+                }
+            })
+        })
+    </script>
 }

@@ -12,6 +12,7 @@
     using System.Text;
     using System.Web.Security;
     using Newtonsoft.Json;
+    using WebTickets.Models;
     #endregion using directives
     [AllowAnonymous]
     public class LoginController : ControllerBase
@@ -43,7 +44,7 @@
 
         public ActionResult CheckLoginData(string ruijieId)
         {
-            if ((userRepo.GetCount(x => x.RuiJieId == ruijieId) == 0) && (userRepo.Get(x => x.RuiJieId == ruijieId).AuditStatus == Models.AuditStatus.Unauthorized))
+            if ((userRepo.GetCount(x => x.RuiJieId == ruijieId) == 0) || (userRepo.Get(x => x.RuiJieId == ruijieId).AuditStatus == 0))
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
