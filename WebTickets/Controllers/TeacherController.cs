@@ -28,5 +28,10 @@ namespace WebTickets.Controllers
         {
             return View();
         }
+
+        public ActionResult Introduction()
+        {
+            return View();
+        }
     }
 }

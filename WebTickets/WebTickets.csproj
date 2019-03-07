@@ -317,6 +317,7 @@
     <Content Include="Views\Administrator\Index.cshtml" />
     <Content Include="Views\Maintainer\GetRequest.cshtml" />
     <Content Include="Views\Teacher\AuditRequest.cshtml" />
+    <Content Include="Views\Teacher\Introduction.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
