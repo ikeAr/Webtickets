@@ -1,6 +1,7 @@
 ﻿@using WebTickets.Repo;
 @model WebTickets.RequestModel
 @{
+    /**/
     ViewBag.Title = "Index";
 }
 <table border="1">
@@ -23,18 +24,18 @@
         }
         @foreach (var request in requestRepo.GetAll(x => x.Condition == 0))
         {
-        <tr>
-            <td>@request.StudentId</td>
-            <td>@request.UserName</td>
-            <td>@request.ProblemTitle</td>
-            <td>@request.Image</td>
-            <td>@request.Level</td>
-            <td>@request.Telephone</td>
-            <td>@request.Location</td>
-            <td>@request.ExpectTime</td>
-            <td class="condition" id="Condition-@request.Id" value="">@request.Condition</td>
-            <td><a href="/Maintainer/UpdateStatus?id=@request.Id&condition=1&maintainerId=@ViewBag.CurrentUser.Id" data-id="@request.Id">接受订单</a></td>
-        </tr>
+            <tr>
+                <td>@request.StudentId</td>
+                <td>@request.UserName</td>
+                <td>@request.ProblemTitle</td>
+                <td>@request.Image</td>
+                <td>@request.Level</td>
+                <td>@request.Telephone</td>
+                <td>@request.Location</td>
+                <td>@request.ExpectTime</td>
+                <td class="condition" id="Condition-@request.Id" value="">@request.Condition</td>
+                <td><a href="/Maintainer/UpdateStatus?id=@request.Id&condition=1&maintainerId=@ViewBag.CurrentUser.Id" data-id="@request.Id">接受订单</a></td>
+            </tr>
         }
     </tbody>
 </table>
@@ -42,10 +43,9 @@
 @section Scripts{
     <script>
         $(".condition").each(function (i, e) {//两个参数
-            debugger;
             if (e.innerHTML == "0") {
                 e.innerHTML = "待处理";
             }
-        })          
+        })
     </script>
 }

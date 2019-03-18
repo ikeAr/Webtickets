@@ -35,6 +35,7 @@
                             }
                             if (ViewBag.CurrentUser.Role == Role.Teacher || ViewBag.CurrentUser.Role == Role.Administrator)
                             {
+                                <li>@Html.ActionLink("网信员", "AllUser", "Teacher")</li>
                                 <li>@Html.ActionLink("审核网信员", "AuditUser", "Teacher")</li>
                                 <li>@Html.ActionLink("审核报修单", "AuditRequest", "Teacher")</li>
                                 if (ViewBag.CurrentUser.Role == Role.Administrator)

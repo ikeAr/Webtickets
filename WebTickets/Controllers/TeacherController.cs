@@ -15,7 +15,7 @@ namespace WebTickets.Controllers
         {
             return View();
         }
-        public ActionResult SaveAuditUser(string id ,int auditStatus)
+        public ActionResult SaveAuditUser(string id, int auditStatus)
         {
             var userRepo = new UserRepo();
             var user = userRepo.Get(x => x.Id == id);
@@ -28,7 +28,16 @@ namespace WebTickets.Controllers
         {
             return View();
         }
-
+        public ActionResult DeleteAuditRequest(string id)
+        {
+            var requestRepo = new RequestRepo();
+            requestRepo.DeleteMany(x => x.Id == id);
+            return View("AuditRequest");
+        }
+        public ActionResult AllUser() 
+        {
+            return View();
+        }
         public ActionResult Introduction()
         {
             return View();
