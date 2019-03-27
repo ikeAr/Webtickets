@@ -1,0 +1,66 @@
+﻿@model WebTickets.UserModel
+@using WebTickets.Repo;
+<table border="1">
+    <thead>
+        <tr>
+            <td>@Html.LabelFor(m => m.RuiJieId)</td>
+            <td>@Html.LabelFor(m => m.Name)</td>
+            <td>@Html.LabelFor(m => m.Gender)</td>
+            <td>@Html.LabelFor(m => m.CollegeClass)</td>
+            <td>@Html.LabelFor(m => m.MobilePhone)</td>
+            <td>@Html.LabelFor(m => m.Role)</td>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var userRepo = new UserRepo();
+        }
+        @foreach (var user in userRepo.GetAll())
+        {
+            <tr>
+                <td>@user.RuiJieId</td>
+                <td>@user.Name</td>
+                <td>@user.Gender</td>
+                <td>@user.CollegeClass</td>
+                <td>@user.MobilePhone</td>
+                <td class="role">@user.Role</td>
+                <td><input type="button" onclick="deleteUser('@user.Id')" value="删除用户" /></td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts{
+    <script>
+        function deleteUser(id) {
+            $.ajax(
+                {
+                    type: "GET",
+                    url: "/Administrator/DeletelUser?id=" + id,
+                    success: function (result) {
+                        if (result) {
+                            alert("删除成功");
+                            window.location.reload();
+                        }
+                    },
+                    error: function () {
+                        alert("网络通讯中断");
+                    }
+                })
+
+        }
+        $(".role").each(function (i, e) {
+            if (e.innerHTML == "User") {
+                e.innerHTML = "用户";
+            } else if (e.innerHTML == "Maintainner") {
+                e.innerHTML = "维修人员";
+            } else if (e.innerHTML == "Teacher") {
+                e.innerHTML = "老师";
+            } else if (e.innerHTML == "Administrator") {
+                e.innerHTML = "管理员";
+            }
+        })
+
+    </script>
+
+
+}
