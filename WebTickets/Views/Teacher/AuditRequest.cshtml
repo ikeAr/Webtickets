@@ -61,26 +61,9 @@
                 if (e.innerHTML == "0") {
                     e.innerHTML = "待处理";
                 } else if (e.innerHTML == '1') {
-                    e.innerHTML = "已处理";
+                    e.innerHTML = "已接收";
                 }
             });
-            //$("#delete").click(function () {
-            //    alert();
-            //    var requestId = $("#requestId").val();
-            //    $.ajax(
-            //        {
-            //            type: "GET",
-            //            url: "/Teacher/DeleteAuditRequest?id=" + requestId,
-            //            success: function (result) {
-            //                if (result) {
-            //                    window.location.reload();
-            //                }
-            //            },
-            //            error: function (result) {
-            //                alert("网络异常，通讯失败");
-            //            }
-            //        })
-            //})
         })
     </script>
 }

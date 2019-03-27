@@ -15,5 +15,15 @@ namespace WebTickets.Controllers
         {
             return View();
         }
+        public ActionResult AllUser()
+        {
+            return View();
+        }
+        public ActionResult DeletelUser(string id)
+        {
+            var userRepo = new UserRepo();
+            userRepo.Delete(id);
+            return Json("true",JsonRequestBehavior.AllowGet);
+        }
     }
 }

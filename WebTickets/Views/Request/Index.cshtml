@@ -11,52 +11,123 @@
     <h3>订单</h3>
     <p>请填写</p>
     @using (Html.BeginForm(
-        "SaveRequestData", "Request",
-        new { ReturnUrl = this.Request.QueryString["ReturnUrl"], enctype = "multipart/form-data" },
-        FormMethod.Post))
+        "SaveRequestData", "Request", FormMethod.Post,
+      new { enctype = "multipart/form-data" }
+      ))
     {
         @Html.LabelFor(m => m.UserName)
         <br />
-        @Html.TextBoxFor(m => m.UserName)
+        @Html.TextBoxFor(m => m.UserName, new { id = "userName" })
         <br />
+        <span id="userName-error-massage" style="color: #FF0000; display: none">请输入姓名</span><br />
         @Html.LabelFor(m => m.StudentId)
         <br />
-        @Html.TextBoxFor(m => m.StudentId)
+        @Html.TextBoxFor(m => m.StudentId, new { id = "studentId" })
         <br />
+        <span id="studentId-error-massage" style="color: #FF0000; display: none">请输入学号</span><br />
         @Html.LabelFor(m => m.ProblemTitle)
         <br />
-        @Html.TextBoxFor(m => m.ProblemTitle)
-        <br />
-        @Html.LabelFor(m => m.Image)
-        <br />
-        <input type="file" value="请上传截图" name="ImageFile" required />
-        @Html.LabelFor(m => m.Level)
-        <br />
-        @Html.RadioButtonFor(m => m.Level, "一级")
-        @Html.RadioButtonFor(m => m.Level, "二级")
-        @Html.RadioButtonFor(m => m.Level, "三级")
+        @Html.TextBoxFor(m => m.ProblemTitle, new { id = "problemTitle" })
         <br />
         @Html.LabelFor(m => m.Telephone)
         <br />
-        @Html.TextBoxFor(m => m.Telephone)
+        @Html.TextBoxFor(m => m.Telephone, new { id = "telephone" })
         <br />
+        <span id="telephone-error-massage" style="color: #FF0000; display: none">请输入联系方式</span><br />
         @Html.LabelFor(m => m.Location)
         <br />
-        @Html.TextBoxFor(m => m.Location)
+        @Html.TextBoxFor(m => m.Location, new { id = "location" })
         <br />
+        <span id="location-error-massage" style="color: #FF0000; display: none">请输入所在位置</span><br />
         @Html.LabelFor(m => m.ExpectTime)
         <br />
-        @Html.TextBoxFor(m => m.ExpectTime)
+        @Html.TextBoxFor(m => m.ExpectTime, new { id = "expectTime" })
         <br />
-        @*@Html.LabelFor(m => m.Condition)
-            <br />
-            @Html.TextBoxFor(m => m.Condition)*@
+        <span id="expectTime-error-massage" style="color: #FF0000; display: none">请输入你期望的处理时间</span><br />
         <div class="error-container">
             @Html.ValidationSummary(true, "", new { @class = "danger" })
         </div>
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.Id)
-        <input type="submit" class="btn btn-default" value="提交 " />
+        <input type="button" class="btn-default"value="提交 " />
     }
 </div>
-
+@section scripts{
+    <script>
+        $(function () {  
+            $("#userName").blur(function () {
+                var userName = $("#userName").val();
+                if (userName == "") {
+                    $("#userName-error-massage").show();
+                } else {
+                    $("#userName-error-massage").hide();
+                }
+            })
+            $("#studentId").blur(function () {
+                var studentId = $("#studentId").val();
+                if (studentId == "") {
+                    $("#studentId-error-massage").show();
+                } else {
+                    $("#studentId-error-massage").hide();
+                }
+            })
+            $("#telephone").blur(function () {
+                var telephone = $("#telephone").val();
+                if (telephone == "") {
+                    $("#telephone-error-massage").show();
+                }
+                else {
+                    $("#telephone-error-massage").hide();
+                }
+            })
+            $("#location").blur(function () {
+                var location = $("#location").val();
+                if (location == "") {
+                    $("#location-error-massage").show();
+                } else {
+                    $("#location-error-massage").hide();
+                }
+            })
+            $("#expectTime").blur(function () {
+                var expectTime = $("#expectTime").val();
+                if (expectTime == "") {
+                    $("#expectTime-error-massage").show();
+                } else {
+                    $("#expectTime-error-massage").hide();
+                }
+            })
+            $(".btn-default").click(function () {
+                var userName = $("#userName").val();
+                var studentId = $("#studentId").val();
+                var telephone = $("#telephone").val();
+                var location = $("#location").val();
+                var expectTime = $("#expectTime").val();
+                if (userName == "" | studentId == "" | telephone == "" | location == "" | expectTime == "") {
+                    alert("您有未填写的信息，请填完之后提交");
+                } else {
+                    var myObj = {
+                        userName: $("#userName").val(),
+                        studentId: $("#studentId").val(),
+                        problemTitle: $("#problemTitle").val(),
+                        telephone: $("#telephone").val(),
+                        location: $("#location").val(),
+                        expectTime: $("#expectTime").val()
+                    }
+                    var ajaxParam = {
+                        type: "POST",
+                        url: "/Request/SaveRequestData",
+                        data: myObj,
+                        success: function () {
+                            alert("您已提交成功，请耐心等待维修人员处理");
+                        },
+                        error: function () {
+                            alert("Network error");
+                        }
+                    };
+                    $.ajax(ajaxParam);
+                    window.location.href="/Home/Index";
+                }
+            })
+        })
+    </script>
+}

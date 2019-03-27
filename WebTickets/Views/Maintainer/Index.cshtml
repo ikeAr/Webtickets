@@ -34,7 +34,7 @@
                 <td>@request.Location</td>
                 <td>@request.ExpectTime</td>
                 <td class="condition" id="Condition-@request.Id" value="">@request.Condition</td>
-                <td><a href="/Maintainer/UpdateStatus?id=@request.Id&condition=1&maintainerId=@ViewBag.CurrentUser.Id" data-id="@request.Id">接受订单</a></td>
+                <td><input type="button" onclick="acceptRequest('@request.Id','@ViewBag.CurrentUser.Id')" value="接受订单" /></td>
             </tr>
         }
     </tbody>
@@ -42,10 +42,28 @@
 
 @section Scripts{
     <script>
-        $(".condition").each(function (i, e) {//两个参数
-            if (e.innerHTML == "0") {
-                e.innerHTML = "待处理";
-            }
-        })
+        function acceptRequest(id, maintainerId) {
+            if (confirm("您确认接受此订单么？？？")) {
+                $.ajax(
+                    {
+                        type: "Get",
+                        url: "/Maintainer/UpdateStatus?id=" + id + "&condition=" + 1 + "&maintainerId=" + maintainerId,
+                        success: function (result) {
+                            if (result) {
+                                window.location.reload();
+                            }
+                        },
+                        error: function (result) {
+                            alert("网络异常，通讯失败");
+                        }
+
+                    })
+            }    
+        }
+            $(".condition").each(function (i, e) {//两个参数
+                if (e.innerHTML == "0") {
+                    e.innerHTML = "待处理";
+                }
+            })
     </script>
 }

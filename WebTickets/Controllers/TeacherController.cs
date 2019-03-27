@@ -34,10 +34,7 @@ namespace WebTickets.Controllers
             requestRepo.DeleteMany(x => x.Id == id);
             return View("AuditRequest");
         }
-        public ActionResult AllUser() 
-        {
-            return View();
-        }
+       
         public ActionResult Introduction()
         {
             return View();

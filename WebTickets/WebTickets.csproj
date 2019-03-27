@@ -318,7 +318,7 @@
     <Content Include="Views\Maintainer\GetRequest.cshtml" />
     <Content Include="Views\Teacher\AuditRequest.cshtml" />
     <Content Include="Views\Teacher\Introduction.cshtml" />
-    <Content Include="Views\Teacher\AllUser.cshtml" />
+    <Content Include="Views\Administrator\AllUser.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

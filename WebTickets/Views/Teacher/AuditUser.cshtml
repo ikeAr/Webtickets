@@ -23,9 +23,25 @@
                 <td>@user.Gender</td>
                 <td>@user.CollegeClass</td>
                 <td>@user.MobilePhone</td>
-                <td>@user.Role</td>
+                <td class="role">@user.Role</td>
                 <td><a href="/Teacher/SaveAuditUser?id=@user.Id&auditStatus=1">通过</a></td>
             </tr>
         }
     </tbody>
 </table>
+@section scripts{
+    <script>
+        $(".role").each(function (i, e) {
+            if (e.innerHTML == "User") {
+                e.innerHTML = "用户";
+            } else if (e.innerHTML == "Maintainner") {
+                e.innerHTML = "维修人员";
+            } else if (e.innerHTML == "Teacher") {
+                e.innerHTML = "老师";
+            } else if (e.innerHTML == "Administrator") {
+                e.innerHTML = "管理员";
+            }
+        })
+    </script>
+    
+    }

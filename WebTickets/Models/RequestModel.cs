@@ -9,7 +9,7 @@ namespace WebTickets
     {
         //public RequestModel()
         //{
-        //    this.ImageList = new List<Image>();
+        //    this.Image = new List<Image>();
         //}
         [DisplayName("报修人")]
         public string UserName { set; get; }

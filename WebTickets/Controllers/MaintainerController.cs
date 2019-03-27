@@ -20,8 +20,7 @@ namespace WebTickets.Controllers
             ticket.Maintainer = maintainer.Name;
             ticket.Condition = condition;
             requestRepo.Update(ticket);            
-            //return this.Json("success",JsonRequestBehavior.AllowGet);
-            return View("Index");
+            return this.Json("true",JsonRequestBehavior.AllowGet);   
         }
 
         public ActionResult Introduction()

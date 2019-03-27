@@ -30,14 +30,21 @@
             {
                 newUser.Password = newUser.Password.ToMD5HashCode();
                 var user = userRepo.Get(x => x.RuiJieId == newUser.RuiJieId);
-                if (user.Password == newUser.Password)
+                try
                 {
-                    SetAuthCookie(user.Name, newUser.IsRememberMe, user);
-                    return this.CheckReturnUrl(returnUrl)
-                        ? this.Redirect(returnUrl)
-                        : this.RedirectToAction("Index", "Home") as ActionResult;
+                    if (user.Password == newUser.Password)
+                    {
+                        SetAuthCookie(user.Name, newUser.IsRememberMe, user);
+                        return this.CheckReturnUrl(returnUrl)
+                            ? this.Redirect(returnUrl)
+                            : this.RedirectToAction("Index", "Home") as ActionResult;
+                    }
+                    this.ModelState.AddModelError("", "请检查你的用户名或密码");
                 }
-                this.ModelState.AddModelError("", "请检查你的用户名或密码");
+                catch (Exception ex)
+                {
+                    ex.GetExpandedMessage();
+                }
             }
             return this.View("Index", newUser);
         }
