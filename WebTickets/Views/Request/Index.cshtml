@@ -146,7 +146,11 @@
     }
 
     body {
-        background-image: url(/Content/1234.jpg)
+        background-image: url(/Content/1234.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: 100% 100%;
     }
 </style>
 
@@ -166,32 +170,34 @@
 
                     <div class="form-group">
                         <label for="StudentId" class="sr-only">锐捷账号</label>
-                        <input type="text" class="form-control" id="studentId" placeholder="请输入您的锐捷账号" autocomplete="off">
+                        <input type="text" class="form-control" id="studentId" name="studentId"placeholder="请输入您的锐捷账号" autocomplete="off">
                         <span id="studentId-error-massage" style="color :darkgreen; display: none">请输入锐捷账号</span><br />
                     </div>
 
                     <div class="form-group">
                         <label class="sr-only" for="ProblemTitle">问题描述</label>
-                        <input type="text" class="form-control" id="problemTitle" placeholder="请将问题输入此处" autocomplete="off">
+                        <input type="text" class="form-control" id="problemTitle"name="problemTitle" placeholder="请将问题输入此处" autocomplete="off">
                     </div>
 
                     <div class="form-group">
                         <label for="Telephone" class="sr-only">联系电话</label>
                         <input type="tel" class="form-control" placeholder="请输入您的可联系方式" name="telephone" id="telephone" />
-                        <span id="telephone-error-massage" style="color:blue; display: none">请输入联系方式</span><br />
+                        <span id="telephone-error-massage" style="color:darkgreen; display: none">请输入联系方式</span><br />
                     </div>
 
                     <div class="form-group">
                         <label class="sr-only" for="Location">所在位置</label>
-                        <input type="text" class="form-control" placeholder="请输入您的具体位置信息" id="location" />
+                        <input type="text" class="form-control"name="location" placeholder="请输入您的具体位置信息" id="location" />
                     </div>
 
                     <div class="form-group">
                         <label  class="sr-only">期待处理时间</label>
-                        <input type="text" class="form-control" id="expectTime" placeholder="请输入你期望的处理时间" />
-                        <span id="expectTime-error-massage" style="color:dodgerblue; display: none">请输入你期望的处理时间</span>
+                        <input type="text" class="form-control" id="expectTime"name="expectTime" placeholder="请输入你期望的处理时间" />
+                        <span id="expectTime-error-massage" style="color:darkgreen; display: none">请输入你期望的处理时间</span>
                     </div>
                     <div class="form-group">
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.Id)
                         <input type="submit" value="提交" class="btn btn-primary">
                     </div>
                 </form>
@@ -202,11 +208,7 @@
 </body>
 @* 
 
-            @Html.AntiForgeryToken()
-            @Html.HiddenFor(m => m.Id)
-            <input type="button" class="btn-default"value="提交 " />
-        }
-    </div>*@
+            *@
 @section scripts{
     <script>
         $(function () {
@@ -251,7 +253,7 @@
                     $("#expectTime-error-massage").hide();
                 }
             })
-            $(".btn-default").click(function () {
+            $(".btn-primary").click(function () {
                 var userName = $("#userName").val();
                 var studentId = $("#studentId").val();
                 var telephone = $("#telephone").val();
