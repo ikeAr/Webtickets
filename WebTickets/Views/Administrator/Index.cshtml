@@ -6,7 +6,7 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
 <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> 
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <style>
     a {
         color: #33cccc;
@@ -137,6 +137,7 @@
         color: #000;
     }
 
+
     .placeholder {
         color: #aaa;
     }
@@ -156,11 +157,11 @@
                         <input type="text" class="form-control" id="Name" placeholder="请输入您的名字" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <label  class="sr-only">账号</label>
+                        <label class="sr-only">账号</label>
                         <input type="text" class="form-control" placeholder="请输入学号或工号" name="RuijieId" id="RuiJieId" />
                     </div>
                     <div class="form-group">
-                        <label  class="sr-only">Password</label>
+                        <label class="sr-only">Password</label>
                         <input type="password" class="form-control" id="Password" placeholder="请设置您的密码" autocomplete="off">
                     </div>
                     <div class="form-group">
@@ -170,13 +171,13 @@
                     </div>
                     <div class="form-group">
                         <label class="sr-only">座机</label>
-                        <input type="tel"class="form-control" placeholder="请输入您的座机"name="TelePhone"id="TelePhone" />
+                        <input type="tel" class="form-control" placeholder="请输入您的座机" name="TelePhone" id="TelePhone" />
                     </div>
-   
+
                     <div class="form-group">
-                        <label  class="sr-only">手机号</label>
-                        <input type="tel" class="form-control" placeholder="请输入您的常用联系方式" name="MobilePhone"id="MobilePhone" />
-                    </div>          
+                        <label class="sr-only">手机号</label>
+                        <input type="tel" class="form-control" placeholder="请输入您的常用联系方式" name="MobilePhone" id="MobilePhone" />
+                    </div>
                     <div class="form-group">
                         <input type="submit" value="submit" class="btn btn-primary">
                     </div>
@@ -196,36 +197,11 @@
 
 
 
-@*@model WebTickets.UserModel
-    @using (Html.BeginForm(
-        "SaveRegisterData", "Register", FormMethod.Post))
-    {
-        @Html.LabelFor(m => m.Name)
-        <br />
-        @Html.TextBoxFor(m => m.Name)
-        <br />
-        @Html.LabelFor(m => m.RuiJieId)
-        <br />
-        @Html.TextBoxFor(m => m.RuiJieId)
-        <br />
-        @Html.LabelFor(m => m.Password)
-        <br />
-        @Html.PasswordFor(m => m.Password)
-        <br />
-        <lable>确认密码</lable><br />
-        <input type="password" id="confirmPassword" /><br />
-        @Html.LabelFor(m => m.TelePhone)
-        <br />
-        @Html.TextBoxFor(m => m.TelePhone)
-        <br />
-        @Html.LabelFor(m => m.MobilePhone)
-        <br />
-        @Html.TextBoxFor(m => m.MobilePhone)
-        <br />
-        <input id="Role" name="Role" value="2" />
+@*<input id="Role" name="Role" value="2" />
         <input id="auditUser" name="AuditStatus" value="1" />
         <input type="submit" value="提交" />
     }*@
+
 @section scripts{
     <script>
         $(function () {

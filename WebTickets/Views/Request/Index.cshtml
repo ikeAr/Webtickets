@@ -201,51 +201,7 @@
         </div>
     </div>
 </body>
-@*<style>
-        .error-container span {
-            display: block;
-        }
-    </style>
-    <div class="">
-        <h3>订单</h3>
-        <p>请填写</p>
-        @using (Html.BeginForm(
-            "SaveRequestData", "Request", FormMethod.Post,
-          new { enctype = "multipart/form-data" }
-          ))
-        {
-            @Html.LabelFor(m => m.UserName)
-            <br />
-            @Html.TextBoxFor(m => m.UserName, new { id = "userName" })
-            <br />
-            <span id="userName-error-massage" style="color: #FF0000; display: none">请输入姓名</span><br />
-            @Html.LabelFor(m => m.StudentId)
-            <br />
-            @Html.TextBoxFor(m => m.StudentId, new { id = "studentId" })
-            <br />
-            <span id="studentId-error-massage" style="color: #FF0000; display: none">请输入学号</span><br />
-            @Html.LabelFor(m => m.ProblemTitle)
-            <br />
-            @Html.TextBoxFor(m => m.ProblemTitle, new { id = "problemTitle" })
-            <br />
-            @Html.LabelFor(m => m.Telephone)
-            <br />
-            @Html.TextBoxFor(m => m.Telephone, new { id = "telephone" })
-            <br />
-            <span id="telephone-error-massage" style="color: #FF0000; display: none">请输入联系方式</span><br />
-            @Html.LabelFor(m => m.Location)
-            <br />
-            @Html.TextBoxFor(m => m.Location, new { id = "location" })
-            <br />
-            <span id="location-error-massage" style="color: #FF0000; display: none">请输入所在位置</span><br />
-            @Html.LabelFor(m => m.ExpectTime)
-            <br />
-            @Html.TextBoxFor(m => m.ExpectTime, new { id = "expectTime" })
-            <br />
-            <span id="expectTime-error-massage" style="color: #FF0000; display: none">请输入你期望的处理时间</span><br />
-            <div class="error-container">
-                @Html.ValidationSummary(true, "", new { @class = "danger" })
-            </div>
+@*
             @Html.AntiForgeryToken()
             @Html.HiddenFor(m => m.Id)
             <input type="button" class="btn-default"value="提交 " />
