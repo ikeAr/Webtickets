@@ -154,7 +154,7 @@
                     <h2>Add</h2>
                     <div class="form-group">
                         <label class="sr-only">Name</label>
-                        <input type="text" class="form-control" id="Name" placeholder="请输入您的名字" autocomplete="off">
+                        <input type="text" class="form-control" id="Name" placeholder="请输入您的名字" name="Name" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label class="sr-only">账号</label>
@@ -162,7 +162,7 @@
                     </div>
                     <div class="form-group">
                         <label class="sr-only">Password</label>
-                        <input type="password" class="form-control" id="Password" placeholder="请设置您的密码" autocomplete="off">
+                        <input type="password" class="form-control" id="Password" placeholder="请设置您的密码" name="Password" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label class="sr-only">Re-type Password</label>
@@ -179,6 +179,8 @@
                         <input type="tel" class="form-control" placeholder="请输入您的常用联系方式" name="MobilePhone" id="MobilePhone" />
                     </div>
                     <div class="form-group">
+                        <input id="role" name="Role" value="2" />
+                        <input id="auditUser" name="AuditStatus" value="1" />
                         <input type="submit" value="submit" class="btn btn-primary">
                     </div>
                 </form>
@@ -187,25 +189,10 @@
         </div>
     </div>
 </body>
-
-
-
-
-
-
-
-
-
-
-@*<input id="Role" name="Role" value="2" />
-        <input id="auditUser" name="AuditStatus" value="1" />
-        <input type="submit" value="提交" />
-    }*@
-
 @section scripts{
     <script>
         $(function () {
-            $("#Role").hide();
+            $("#role").hide();
             $("#auditUser").hide();
             $("#confirmPassword").blur(function () {
                 var password = $("#password").val();

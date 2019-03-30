@@ -155,7 +155,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                <form action="/Request/SaveRegisterData" method="post" class="fh5co-form animate-box" data-animate-effect="fadeIn">
+                <form action="/Request/SaveRequestData" method="post" class="fh5co-form animate-box" data-animate-effect="fadeIn">
                     <h2>报修订单</h2>
                     <div class="form-group">
 
@@ -192,7 +192,7 @@
                         <span id="expectTime-error-massage" style="color:dodgerblue; display: none">请输入你期望的处理时间</span>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="提交" class="btn btn-primary">
+                        <input type="button" value="提交" class="btn btn-primary">
                     </div>
                 </form>
 
@@ -251,7 +251,7 @@
                     $("#expectTime-error-massage").hide();
                 }
             })
-            $(".btn-default").click(function () {
+            $(".btn-primary").click(function () {
                 var userName = $("#userName").val();
                 var studentId = $("#studentId").val();
                 var telephone = $("#telephone").val();
