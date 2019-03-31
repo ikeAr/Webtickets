@@ -21,7 +21,7 @@ namespace WebTickets.Controllers
             var user = userRepo.Get(x => x.Id == id);
             user.AuditStatus = auditStatus;
             userRepo.Update(user);
-            return View("AuditUser");
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult AuditRequest()

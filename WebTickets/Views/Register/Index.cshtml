@@ -4,23 +4,27 @@
     <input type="text" name="RuijieId" id="ruijieId" /><br />
     <span id="ruijieId-error-massage" style="color: #FF0000; display: none">您输入的用户名已存在，请重新输入</span><br />
     <label>密码</label>
-    <input type="password" name="Password" id="password" /><br /><br />
+    <input type="password" name="Password" id="password" /><br />
+    <span id="password-error-massage" style="color: #FF0000; display: none">密码长度不得小于6位</span><br /><br />
     <label>确认密码</label>
     <input type="password" id="confirmPassword" /><br />
-    <span id="password-error-massage" style="color: #FF0000; display: none">您输入的确认密码与密码不一致，请重新输入</span><br />
+    <span id="confirmPassword-error-massage" style="color: #FF0000; display: none">您输入的确认密码与密码不一致，请重新输入</span><br /><br />
     <label>姓名</label>
-    <input type="text" name="Name" /><br /><br />
+    <input type="text" name="Name" id="name" /><br />
+    <span id="name-error-massage" style="color: #FF0000; display: none">姓名不能为空</span><br /><br />
     <label>性别</label>
     <input type="radio" name="Gender" value="男" />男
     <input type="radio" name="Gender" value="女" />女<br /><br />
     <label>移动电话</label>
-    <input type="tel" name="MobilePhone" /><br /><br />
+    <input type="tel" name="MobilePhone" id="mobilePhone" /><br />
+    <span id="mobilePhone-error-massage" style="color: #FF0000; display: none">移动电话不能为空</span><br /><br />
     <label>学院班级</label>
-    <input type="text" name="CollegeClass" /><br /><br />
+    <input type="text" name="CollegeClass" id="collegeClass" /><br />
+    <span id="collegeClass-error-massage" style="color: #FF0000; display: none">学院班级不能为空</span><br /><br />
     <label>角色</label>
     <input type="radio" name="Role" value="0" />普通用户
     <input type="radio" name="Role" value="1" />维修骑士<br /><br />
-    <input type="submit" id="submit" value="注册" /><br>
+    <input type="button" id="btn-submit" value="注册" /><br>
 </form>
 @section scripts{
     <script>
@@ -34,10 +38,8 @@
                         success: function (result) {
                             if (result) {
                                 $("#ruijieId-error-massage").show();
-                                $("#submit").hide();
                             } else {
                                 $("#ruijieId-error-massage").hide();
-                                $("#submit").show();
                             }
                         },
                         error: function (result) {
@@ -45,16 +47,79 @@
                         }
                     }
                 );
-            });
+            })
+            $("#password").blur(function () {
+                var password = $("#password").val();
+                if (password == "" | password.length < 6) {
+                    $("#password-error-massage").show();
+                } else {
+                    $("#password-error-massage").hide();
+                }
+            })
+            $("#name").blur(function () {
+                var name = $("#name").val();
+                if (name == "") {
+                    $("#name-error-massage").show();
+                } else {
+                    $("#name-error-massage").hide();
+                }
+            })
+            $("#mobilePhone").blur(function () {
+                var mobilePhone = $("#mobilePhone").val();
+                if (mobilePhone == "") {
+                    $("#mobilePhone-error-massage").show();
+                } else {
+                    $("#mobilePhone-error-massage").hide();
+                }
+            })
+            $("#collegeClass").blur(function () {
+                var collegeClass = $("#collegeClass").val();
+                if (collegeClass == "") {
+                    $("#collegeClass-error-massage").show();
+                } else {
+                    $("#collegeClass-error-massage").hide();
+                }
+            })
+
             $("#confirmPassword").blur(function () {
                 var password = $("#password").val();
                 var confirmPassword = $("#confirmPassword").val();
                 if (password != confirmPassword) {
-                    $("#password-error-massage").show();
-                    $("#submit").hide();
+                    $("#confirmPassword-error-massage").show();
                 } else {
-                    $("#password-error-massage").hide();
-                    $("#submit").show();
+                    $("#confirmPassword-error-massage").hide();
+                }
+            })
+            $("#btn-submit").click(function () {
+                var ruijieId = $("#ruijieId").val();
+                var password = $("#password").val();
+                var name = $("#name").val();
+                var mobilePhone = $("#mobilePhone").val();
+                var collegeClass = $("#collegeClass").val();
+                var confirmPassword = $("#confirmPassword").val();
+                if (ruijieId == "" | password == "" | name == "" | mobilePhone == "" | collegeClass == "" | confirmPassword == "") {
+                    alert("您有未填写的信息，请填完之后提交");
+                } else {
+                    var myObj = {
+                        ruijieId: $("#ruijieId").val(),
+                        password: $("#password").val(),
+                        name: $("#name").val(),
+                        mobilePhone: $("#mobilePhone").val(),
+                        collegeClass: $("#collegeClass").val()
+                    }
+                    var ajaxParam = {
+                        type: "POST",
+                        url: "/Register/SaveRegisterData",
+                        data: myObj,
+                        success: function () {
+                            alert("您已经注册成功，请耐心等待老师审核");
+                        },
+                        error: function () {
+                            alert("Network error");
+                        }
+                    };
+                    $.ajax(ajaxParam);
+                    window.location.href = "/Home/Index";
                 }
             })
         })

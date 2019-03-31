@@ -47,8 +47,8 @@
         <div class="error-container">
             @Html.ValidationSummary(true, "", new { @class = "danger" })
         </div>
-        @Html.AntiForgeryToken()
-        @Html.HiddenFor(m => m.Id)
+        @*@Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)*@
         <input type="button" class="btn-default"value="提交 " />
     }
 </div>

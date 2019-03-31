@@ -24,13 +24,50 @@
                 <td>@user.CollegeClass</td>
                 <td>@user.MobilePhone</td>
                 <td class="role">@user.Role</td>
-                <td><a href="/Teacher/SaveAuditUser?id=@user.Id&auditStatus=1">通过</a></td>
+                <td><input type="button" onclick="auditUser('@user.Id')"value="通过" /></td>
+                <td><input type="button" onclick="deleteUser('@user.Id')" value="拒绝"></td>
             </tr>
         }
     </tbody>
 </table>
 @section scripts{
     <script>
+        function auditUser(id) {
+            if (confirm("您确定通过他的申请么")){
+                $.ajax({
+                    type: "POST",
+                    url: "/Teacher/SaveAuditUser?id=" + id + "&auditStatus=" + 1,
+                    success: function (result) {
+                        if (result) {
+                            alert("操作成功");
+                            window.location.reload();
+                        }
+                    },
+                    error: function (result) {
+                        alert("网络异常，通讯失败");
+                    }
+                }
+                )
+            }
+        }
+        function deleteUser(id) {
+            if (confirm("您确定拒绝申请么")) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Administrator/DeletelUser?id=" + id ,
+                    success: function (result) {
+                        if (result) {
+                            alert("操作成功");
+                            window.location.reload();
+                        }
+                    },
+                    error: function (result) {
+                        alert("网络异常，通讯失败");
+                    }
+                }
+                )
+            }
+        }
         $(".role").each(function (i, e) {
             if (e.innerHTML == "User") {
                 e.innerHTML = "用户";
@@ -43,5 +80,5 @@
             }
         })
     </script>
-    
-    }
+
+}

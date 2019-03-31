@@ -2,8 +2,26 @@
     ViewBag.Title = "登录页";
 }
 @model WebTickets.UserModel
-
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <style>
+    .forms {
+        position: absolute;
+        width: 300px;
+        height: 200px;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        margin-top: -200px;
+        margin-left: -150px;
+        float: initial;
+    }
+
+    .form-control {
+        margin-top: initial;
+    }
+
     .error-container {
         margin: 10px 0;
     }
@@ -16,44 +34,61 @@
         color: #ff0000;
         font-weight: normal;
     }
-</style>
 
-<div class="jumbotron">
-    <h1>登陆</h1>
-    <p class="lead">欢迎你来到这里</p>
-
-    @using (Html.BeginForm(
-        "Login", "Login",
-        new { ReturnUrl = this.Request.QueryString["ReturnUrl"] },
-        FormMethod.Post))
-    {
-        @Html.LabelFor(m => m.RuiJieId)
-        <br />
-        @Html.TextBoxFor(m => m.RuiJieId, new { id = "ruijieId" })
-        <br />
-        <span id="ruijieId-error-files" style="color: #FF0000; display: none">你输入的用户名不存在，请重新输入或正在审核，请耐心等待</span><br />
-        @Html.LabelFor(m => m.Password)
-        <br />
-        @Html.PasswordFor(m => m.Password, new { id = "password" })
-        <br /><br />
-        @Html.CheckBoxFor(m => m.IsRememberMe)
-        <span></span>
-        @Html.LabelFor(m => m.IsRememberMe)
-        <br />
-        <div class="error-container">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
-            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-        </div>
-
-        @Html.AntiForgeryToken()
-        @Html.HiddenFor(m => m.Id)
-
-        <input type="submit" class="btn btn-default" id="submit" value="登陆"/>
-        @Html.ActionLink("注册", "index", "Register");
+    label {
+        display: inline;
+        float: left;
     }
-</div>
 
+    h2 {
+        color: black;
+        font-style: normal;
+    }
+</style>
+<div class="container" id="login_div">
+    <div class="forms ">
+        <div>
+            <h2 class="form-signin-heading">登陆</h2>
+        </div>
+        <form class="form-horizontal" role="form" action="/Login/Login?ReturnUrl=@this.Request.QueryString["ReturnUrl"] " method="post">
+            <div class="form-group">
+                <br />
+                <label class="col-sm-2 control-label" for="RuiJieId">用&nbsp;户&nbsp;名</label>
+                <div class="col-sm-10">
+                    <input class="form-control" placeholder="请输入学号或工号" data-val="true" data-val-required="请输入用户名" id="ruijieId" name="RuiJieId" type="text" value="" />   <br />
+                </div>
+                <span id="ruijieId-error-files" style="color: #FF0000; display: none">你输入的用户名不存在，请重新输入或正在审核，请耐心等待</span>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="Password">&nbsp; 密&nbsp;码</label>        <br />
+                <div class="col-sm-10">
+                    <input class="form-control" data-val="true" placeholder="请在此处输入你的密码！" data-val-required="请输入密码" id="password" name="Password" type="password" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label for="IsRememberMe">
+                            <input type="checkbox" data-val="true" data-val-required="保存密码字段是必需的。" id="IsRememberMe" name="IsRememberMe" value="true" /><input name="IsRememberMe" type="hidden" value="false" />
+                            保存密码
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="error-container">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.Id)
+            <button type="submit" class="btn btn-primary btn-lg btn-block" >登陆</button>
+            <div>
+                <a href="/Register">注册账号</a>
+            </div>
+        </form>
+    </div>
+</div>
 @section scripts{
     <script>
         $(function () {
@@ -66,10 +101,8 @@
                         success: function (result) {
                             if (result) {
                                 $("#ruijieId-error-files").show();
-                                $("#submit").hide();
                             } else {
                                 $("#ruijieId-error-files").hide();
-                                $("#submit").show();
                             }
                         },
                         error: function (result) {

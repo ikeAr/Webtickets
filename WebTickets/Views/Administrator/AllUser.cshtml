@@ -32,21 +32,22 @@
 @section scripts{
     <script>
         function deleteUser(id) {
-            $.ajax(
-                {
-                    type: "GET",
-                    url: "/Administrator/DeletelUser?id=" + id,
-                    success: function (result) {
-                        if (result) {
-                            alert("删除成功");
-                            window.location.reload();
+            if (confirm("删除之后不可恢复，您确定要删除么")) {
+                $.ajax(
+                    {
+                        type: "GET",
+                        url: "/Administrator/DeletelUser?id=" + id,
+                        success: function (result) {
+                            if (result) {
+                                alert("删除成功");
+                                window.location.reload();
+                            }
+                        },
+                        error: function () {
+                            alert("网络通讯中断");
                         }
-                    },
-                    error: function () {
-                        alert("网络通讯中断");
-                    }
-                })
-
+                    })
+            }
         }
         $(".role").each(function (i, e) {
             if (e.innerHTML == "User") {
