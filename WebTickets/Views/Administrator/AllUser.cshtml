@@ -1,0 +1,93 @@
+﻿@model WebTickets.UserModel
+@using WebTickets.Repo;
+<link rel="stylesheet" type="text/css" href="~/Css/AdministratorAllUser.css" />
+<h1>所有用户</h1>
+<div class="table_div">
+    <div class="center_center">
+        <div class="table_content">
+            <table cellspacing="0px" cellpadding="0px">
+                <thead>
+                    <tr>
+                        <th width="15%">锐捷账号</th>
+                        <th width="15%">姓名</th>
+                        <th width="10%">性别</th>
+                        <th width="15%">年级</th>
+                        <th width="15%">电话</th>
+                        <th width="15%">角色</th>
+                        <th wdith="15%" style="border-right:none">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var userRepo = new UserRepo();
+                    }
+                    @foreach (var user in userRepo.GetAll())
+                    {
+                        <tr>
+                            <td>@user.RuiJieId</td>
+                            <td>@user.Name</td>
+                            <td>@user.Gender</td>
+                            <td>@user.CollegeClass</td>
+                            <td>@user.MobilePhone</td>
+                            <td class="role">@user.Role</td>
+                            <td>
+                                <img width='16' height='16' src="~/Content/delete.png" style="vertical-align:middle" />
+                                <input type="button" onclick="deleteUser('@user.Id')" value="删除" class="zmxdelete" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="div_clear">
+    <div class="table_foot">
+        <span>&nbsp;&nbsp;共有 99 条记录，当前第 1/10 页</span>
+        <div style="float:right;padding-right:30px">
+            <input type="button" value="首页" />
+            <input type="button" value="上页" />
+            <input type="button" value="下页" />
+            <input type="button" value="尾页" />
+            <span>跳转到</span>
+            <input type="text" size="1" />
+            <input type="button" value="跳转" />
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+    <script>
+        function deleteUser(id) {
+            if (confirm("删除之后不可恢复，您确定要删除么")) {
+                $.ajax(
+                    {
+                        type: "GET",
+                        url: "/Administrator/DeletelUser?id=" + id,
+                        success: function (result) {
+                            if (result) {
+                                alert("删除成功");
+                                window.location.reload();
+                            }
+                        },
+                        error: function () {
+                            alert("网络通讯中断");
+                        }
+                    })
+            }
+        }
+        $(".role").each(function (i, e) {
+            if (e.innerHTML == "User") {
+                e.innerHTML = "用户";
+            } else if (e.innerHTML == "Maintainner") {
+                e.innerHTML = "维修人员";
+            } else if (e.innerHTML == "Teacher") {
+                e.innerHTML = "老师";
+            } else if (e.innerHTML == "Administrator") {
+                e.innerHTML = "管理员";
+            }
+        })
+    </script>
+}

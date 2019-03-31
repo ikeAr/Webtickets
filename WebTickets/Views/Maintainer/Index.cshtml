@@ -1,0 +1,79 @@
+﻿@using WebTickets.Repo;
+@model WebTickets.RequestModel
+@{
+    /**/
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" type="text/css" href="~/Css/MaintainerIndex.css" />
+<h1>待处理订单</h1>
+<div class="table_div">
+    <div class="div_clear">
+    </div>
+    <div class="center_center">
+        <div class="table_content">
+            <table >
+                <thead>
+                    <tr>
+                        <th width="11%">@Html.LabelFor(m => m.StudentId)</th>
+                        <th width="11%">@Html.LabelFor(m => m.UserName)</th>
+                        <th width="11%">@Html.LabelFor(m => m.ProblemTitle)</th>
+                        <th width="11%">@Html.LabelFor(m => m.Level)</th>
+                        <th width="11%">@Html.LabelFor(m => m.Telephone)</th>
+                        <th width="11%">@Html.LabelFor(m => m.Location)</th>
+                        <th width="11%">@Html.LabelFor(m => m.ExpectTime)</th>
+                        <th width="11%">@Html.LabelFor(m => m.Condition)</th>
+                        <th width="12%">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var requestRepo = new RequestRepo();
+                    }
+                    @foreach (var request in requestRepo.GetAll(x => x.Condition == 0))
+                    {
+                        <tr>
+                            <td width="11%">@request.StudentId</td>
+                            <td width="11%">@request.UserName</td>
+                            <td width="11%">@request.ProblemTitle</td>
+                            <td width="11%">@request.Level</td>
+                            <td width="11%">@request.Telephone</td>
+                            <td width="11%">@request.Location</td>
+                            <td width="11%">@request.ExpectTime</td>
+                            <td width="11%" class="condition" id="Condition-@request.Id" value="">@request.Condition</td>
+                            <td width="11%">
+                                <input type="button" onclick="acceptRequest('@request.Id','@ViewBag.CurrentUser.Id')" value="接单" id="accept" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        function acceptRequest(id, maintainerId) {
+            if (confirm("您确认接受此订单么？？？")) {
+                $.ajax(
+                    {
+                        type: "Get",
+                        url: "/Maintainer/UpdateStatus?id=" + id + "&condition=" + 1 + "&maintainerId=" + maintainerId,
+                        success: function (result) {
+                            if (result) {
+                                window.location.reload();
+                            }
+                        },
+                        error: function (result) {
+                            alert("网络异常，通讯失败");
+                        }
+
+                    })
+            }
+        }
+        $(".condition").each(function (i, e) {//两个参数
+            if (e.innerHTML == "0") {
+                e.innerHTML = "待处理";
+            }
+        })
+    </script>
+}
