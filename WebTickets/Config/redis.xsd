@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="qualified" 
+           elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"  
+           targetNamespace="http://schemas.nap7.com" 
+           xmlns="http://schemas.nap7.com">
+  <xs:element name="RedisConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Redis">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RedisClient">
+                <xs:complexType>                 
+                  <xs:attribute name="ConnectionConfiguration" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

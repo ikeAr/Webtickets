@@ -1,0 +1,665 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SquirrelFramework.Utility.Common</name>
+    </assembly>
+    <members>
+        <member name="T:SquirrelFramework.Utility.Common.Coding.LambdaExpressionHelper">
+            <summary>
+            Lambda Expression Helper
+            </summary>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Coding.LambdaExpressionHelper.RetrievePropertyNameByLambdaExpression``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Retrieve the property name of a LambdaExpression
+            </summary>
+            <param name="expression">Expression, e.g.  () = > user.DisplayName </param>
+            <exception cref="T:System.ArgumentException"></exception>
+            <returns>The property name, e.g. "DisplayName"</returns>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Coding.LambdaExpressionHelper.RetrievePropertyNameByLambdaExpression(System.Linq.Expressions.Expression{System.Func{System.Object}})">
+            <summary>
+            Retrieve the property name of a LambdaExpression
+            </summary>
+            <param name="expression">Expression, e.g.  () = > user.DisplayName </param>
+            <returns>The property name, e.g. "DisplayName"</returns>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Coding.TimeoutFunction.Execute``2(SquirrelFramework.Utility.Common.Coding.TimeOutDelegate{``0,``1},``0,``1@,System.TimeSpan)">
+            <summary>
+            Execute a method with timeout check
+            </summary>
+            <typeparam name="T">Target method parameter type</typeparam>
+            <typeparam name="TR">The result type of execution</typeparam>
+            <param name="timeoutMethod">Target method</param>
+            <param name="param">Target method parameter</param>
+            <param name="result">The result of execution</param>
+            <param name="timeout">Set timeout length</param>
+            <returns>Is timeout</returns>
+        </member>
+        <member name="T:SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime">
+            <summary>
+                Represents a RFC 822 DateTime structure.
+            </summary>
+            <remarks>
+                See <a href="http://asg.web.cmu.edu/rfc/rfc822.html">http://asg.web.cmu.edu/rfc/rfc822.html</a>
+                for for details on the RFC-822 date time guidelines.
+            </remarks>
+        </member>
+        <member name="F:SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime.cachedTimeZoneCommonNameMapping">
+            <summary>
+                This names is defined by RFC822,  but are not so standard, so currently we will not use
+                the one word definition and we will use the offset description instead
+            </summary>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime.ToString(System.TimeZoneInfo,System.String)">
+            <summary>
+            </summary>
+            <param name="targetTimeZoneInfo"></param>
+            <param name="dateTimeFormatString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime.ToString(System.TimeZoneInfo,System.TimeZoneInfo,System.String)">
+            <summary>
+            </summary>
+            <param name="sourceTimeZoneInfo"></param>
+            <param name="targetTimeZoneInfo"></param>
+            <param name="dateTimeFormatString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime.CompareTo(System.Object)">
+            <summary>
+                Compares the current instance with another object of the same type.
+            </summary>
+            <param name="obj">An object to compare with this instance.</param>
+            <returns>A 32-bit signed integer that indicates the relative order of the objects being compared.</returns>
+            <exception cref="T:System.ArgumentException">The <paramref name="obj" /> is not the expected <see cref="T:System.Type" />.</exception>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime.Equals(System.Object)">
+            <summary>
+                Determines whether the specified <see cref="T:System.Object" /> is equal to the current <see cref="T:SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime" />.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with the current <see cref="T:SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime" />.</param>
+            <returns>
+                <b>true</b> if the specified <see cref="T:System.Object" /> is equal to the current <see cref="T:SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime" />;
+                otherwise, <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime.GetHashCode">
+            <summary>
+                Returns a hash code for this instance.
+            </summary>
+            <returns>A 32-bit signed integer hash code.</returns>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime.op_Equality(SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime,SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime)">
+            <summary>
+                Determines if operands are equal.
+            </summary>
+            <param name="first">Operand to be compared.</param>
+            <param name="second">Operand to compare to.</param>
+            <returns><b>true</b> if the values of its operands are equal, otherwise; <b>false</b>.</returns>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime.op_Inequality(SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime,SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime)">
+            <summary>
+                Determines if operands are not equal.
+            </summary>
+            <param name="first">Operand to be compared.</param>
+            <param name="second">Operand to compare to.</param>
+            <returns><b>false</b> if its operands are equal, otherwise; <b>true</b>.</returns>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime.op_LessThan(SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime,SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime)">
+            <summary>
+                Determines if first operand is less than second operand.
+            </summary>
+            <param name="first">Operand to be compared.</param>
+            <param name="second">Operand to compare to.</param>
+            <returns><b>true</b> if the first operand is less than the second, otherwise; <b>false</b>.</returns>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime.op_GreaterThan(SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime,SquirrelFramework.Utility.Common.Datetime.Rfc822DateTime)">
+            <summary>
+                Determines if first operand is greater than second operand.
+            </summary>
+            <param name="first">Operand to be compared.</param>
+            <param name="second">Operand to compare to.</param>
+            <returns><b>true</b> if the first operand is greater than the second, otherwise; <b>false</b>.</returns>
+        </member>
+        <member name="T:SquirrelFramework.Utility.Common.Hash.HashCodeHelper">
+            <summary>
+            Provide the Hash algorithm of the string
+            </summary>
+            <remarks>the name of hash algorithm, please visit to</remarks>
+            <remarks>Url:</remarks>
+            <see cref="!:http://msdn.microsoft.com/en-us/library/wet69s13(v=vs.85).aspx"/> for the valid names
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Hash.HashCodeHelper.GetMD5(System.String)">
+            <summary>
+            获取MD5加密串
+            </summary>
+            <param name="contentText">待转换的内容</param>
+            <returns>小写字母表示的MD5转换结果</returns>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Hash.HashCodeHelper.FormatStringMD5(System.Byte[])">
+            <summary>
+            将MD5字节转换为字符串
+            </summary>
+            <param name="md5Data">待转换的MD5数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Hash.HashCodeHelper.ToJavaHashCode(System.String)">
+            <summary>
+            Returns a hash code for this string. The hash code for a
+            String object is computed as
+            
+            s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]
+            
+            using int arithmetic, where s[i] is the
+            i th character of the string, n is the length of
+            the string, and ^ indicates exponentiation.
+            (The hash value of the empty string is zero.)
+            
+             This extension method use the JAVA 5 String class hash code
+             algorithm to compute the JAVA hash
+            </summary>
+            <param name="value"></param>
+            <returns>a hash code value for this object</returns>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Hash.HashCodeHelper.StringHash(System.String)">
+            <summary>
+            Get a string value's md5 hash and convert to a guid object
+            </summary>
+            <param name="value">value which will be compute hash</param>
+            <returns>The result guid get from </returns>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Hash.HashCodeHelper.ToMD5HashCode(System.String)">
+            <summary>
+            Compute a MD5 hash value of the input string value
+            </summary>
+            <param name="value">input value</param>
+            <returns>the result md5 of the input string value</returns>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Hash.HashCodeHelper.ToHashCode(System.String,System.String)">
+            <summary>
+            Compute a hash value of the input string value using special hash algorithm
+            </summary>
+            <param name="value">input value</param>
+            <param name="hashAlgorithmName">the name of hash algorithm, please visit to <remarks>Url:</remarks>
+            </param>
+            <see cref="!:http://msdn.microsoft.com/en-us/library/wet69s13(v=vs.85).aspx">Url for the valid names</see>
+            <returns>the result hash code of the input string value</returns>
+        </member>
+        <member name="M:SquirrelFramework.Utility.Common.Http.CookieHelper.ConvertToCookieContainer(System.String,System.String)">
+            <summary>
+                Convert HTTP Header's Set-Cookie string to .NET CookieContainer
+            </summary>
+        </member>
+        <member name="T:System.CharExtension">
+            <Summary>
+                Extended the System.Char Structure.
+            </Summary>
+        </member>
+        <member name="M:System.CharExtension.ToEnum``1(System.Char)">
+            <summary>
+                Convert a char value to a enum
+            </summary>
+            <typeparam name="T">the enum type</typeparam>
+            <param name="value">the underline char value</param>
+            <returns>the enum result</returns>
+        </member>
+        <member name="M:System.CharExtension.ToStringInvariant(System.Char)">
+            <summary>
+                Convert char to invariant string
+            </summary>
+            <param name="value">the char value</param>
+            <returns>the invariant string value</returns>
+        </member>
+        <member name="T:System.DateTimeExtension">
+            <Summary>
+                Extended the System.DateTime structure
+            </Summary>
+        </member>
+        <member name="M:System.DateTimeExtension.ToJavaScriptTimestamp(System.DateTime)">
+            <summary>
+            Converts a DateTime to a javascript timestamp.
+            http://stackoverflow.com/a/5117291/13932
+            </summary>
+            <param name="input">The input.</param>
+            <returns>The javascript timestamp.</returns>
+        </member>
+        <member name="M:System.DateTimeExtension.DotNetToJavaTime(System.DateTime)">
+            <summary>
+                convert a date time to java time in long
+            </summary>
+            <param name="dateTime">date time</param>
+            <returns>the java date time in long type</returns>
+        </member>
+        <member name="M:System.DateTimeExtension.ToJavaTime(System.DateTime)">
+            <summary>
+                convert a date time to java time in long
+            </summary>
+            <param name="dateTime">date time</param>
+            <returns>the java date time in long type</returns>
+        </member>
+        <member name="M:System.DateTimeExtension.ToUnixTime(System.DateTime)">
+            <summary>
+                Unix time is offset second of 1970, 1, 1, 0, 0, 0
+            </summary>
+            <param name="dateTime" />
+            <returns></returns>
+        </member>
+        <member name="M:System.DateTimeExtension.ToWindowsFileTime(System.DateTime)">
+            <summary>
+                Windows file  time is offset second of 1600, 1, 1, 0, 0, 0
+            </summary>
+            <param name="dateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Collections.Generic.DictionaryExtension.TryAdd``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1)">
+            <summary>
+            Extension of dictionary TryAdd
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="dict"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Collections.Generic.DictionaryExtension.AddOrReplace``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1)">
+            <summary>
+            Extension of dictionary AddOrReplace
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="dict"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Collections.Generic.DictionaryExtension.GetValue``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1)">
+            <summary>
+            Extension of dictionary GetValue
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="dict"></param>
+            <param name="key"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Collections.Generic.DictionaryExtension.AddRange``2(System.Collections.Generic.Dictionary{``0,``1},System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{``0,``1}},System.Boolean)">
+            <summary>
+            Extension of dictionary AddRange
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="dict"></param>
+            <param name="values"></param>
+            <param name="replaceExisted"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.EnumExtension">
+            <Summary>
+                Extended the System.Enum class
+            </Summary>
+        </member>
+        <member name="M:System.EnumExtension.GetAttribute``1(System.Enum)">
+            <summary>
+                To get the attribute of a enum field
+            </summary>
+            <typeparam name="T">the attribute type</typeparam>
+            <param name="value">an enum object</param>
+            <returns> To get the enum attribute <c>null</c> </returns>
+        </member>
+        <member name="M:System.EnumExtension.Description(System.Enum)">
+            <summary>
+            结合 enum 的 [Description] 标签使用，获取标签中设置的值
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Linq.IEnumerableExtension">
+            <Summary>
+                Extended the IEnumerable interface
+            </Summary>
+        </member>
+        <member name="M:System.Linq.IEnumerableExtension.Shuffle``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            本方法用来对 可列举集合 进行乱序 排列
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.IEnumerableExtension.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+                This is the ForEach extension of the IEnumerable generic type
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="func"></param>
+        </member>
+        <member name="M:System.Linq.IEnumerableExtension.ConvertAll``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+                This is the ConvertAll extension method of the IEnuerable generic type
+            </summary>
+            <typeparam name="TInput"></typeparam>
+            <typeparam name="TOutput"></typeparam>
+            <param name="source"></param>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Int32Extension">
+            <Summary>
+                Extended the System.Int32 class
+            </Summary>
+        </member>
+        <member name="M:System.Int32Extension.ToEnum``1(System.Int32)">
+            <summary>
+                Convert a int value to a specific enum value
+            </summary>
+            <typeparam name="T">the enum type</typeparam>
+            <param name="value">the underline int value</param>
+            <returns>the result of enum value</returns>
+        </member>
+        <member name="T:System.Int64Extension">
+            <Summary>
+                extension of the System.Int64 class
+            </Summary>
+        </member>
+        <member name="M:System.Int64Extension.DotNetToJavaTime(System.Int64)">
+            <summary>
+                when the date time is before 1970 1 1 0 0 , the ticks in java is a minus number
+            </summary>
+            <param name="dotNetTimeInLong">dot net date time in long ticks</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Int64Extension.JavaToDotNetTimeInLong(System.Int64)">
+            <summary>
+                The java long time to dot net time ticks
+            </summary>
+            <param name="javaTimeInLong">java time in long</param>
+            <returns>dot time in ticks</returns>
+        </member>
+        <member name="M:System.Int64Extension.DotNetToWindowsFileTime(System.Int64)">
+            <summary>
+                when the date time is before 1970 1 1 0 0 , the ticks in java is a minus number
+            </summary>
+            <param name="dotNetTimeInLong">dot net date time in long ticks</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Int64Extension.JavaToDotNetTime(System.Int64)">
+            <summary>
+                Convert time in long type of java to DateTime
+            </summary>
+            <param name="javaTimeInLong">date time in java long</param>
+            <returns>the dot net time</returns>
+        </member>
+        <member name="M:System.Int64Extension.UnixToDotNetTime(System.Int64)">
+            <summary>
+                Unix time is offset second of 1970, 1, 1, 0, 0, 0
+            </summary>
+            <param name="unixTimeInLong">time in long</param>
+            <returns>the dot net date time</returns>
+        </member>
+        <member name="M:System.Int64Extension.UnixToJavaTime(System.Int64)">
+            <summary>
+                Unix time is offset second of 1970, 1, 1, 0, 0, 0
+            </summary>
+            <param name="unixTimeInLong">dre time in long type</param>
+            <returns>java time in long type</returns>
+        </member>
+        <member name="M:System.Int64Extension.UnixToDotNetTimeInLong(System.Int64)">
+            <summary>
+                Unix time is offset second of 1970, 1, 1, 0, 0, 0
+            </summary>
+            <param name="unixTimeInLong">time in long</param>
+            <returns>the dot net date time</returns>
+        </member>
+        <member name="M:System.Int64Extension.WindowsFileTimeToDotNetTime(System.Int64)">
+            <summary>
+                Unix time is offset second of 1970, 1, 1, 0, 0, 0
+            </summary>
+            <returns>the dot net date time</returns>
+        </member>
+        <member name="M:System.Int64Extension.WindowsFileTimeToDotNetTimeInLong(System.Int64)">
+            <summary>
+                Unix time is offset second of 1970, 1, 1, 0, 0, 0
+            </summary>
+            <returns>the dot net date time</returns>
+        </member>
+        <member name="T:System.ObjectExtension">
+            <Summary>
+             extension of the System.Object class
+            </Summary>
+        </member>
+        <member name="M:System.ObjectExtension.In``1(``0,``0[])">
+            <summary>
+            In extension
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ObjectExtension.In``1(``0,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            In generic extension
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="collection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ObjectExtension.If``1(``0,System.Predicate{``0},System.Action{``0})">
+            <summary>
+            If reference extension
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="predicate"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ObjectExtension.If``1(``0,System.Predicate{``0},System.Func{``0,``0})">
+            <summary>
+            If value type extension
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="predicate"></param>
+            <param name="function"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ObjectExtension.While``1(``0,System.Predicate{``0},System.Action{``0}[])">
+            <summary>
+            while extension
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="predicate"></param>
+            <param name="actions"></param>
+        </member>
+        <member name="M:System.ObjectExtension.Do``1(``0,System.Action{``0})">
+            <summary>
+            Do extension, this extension is just to write code as human nature language style
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.StringExtension">
+            <Summary>
+                extension of the System.String class
+            </Summary>
+        </member>
+        <member name="M:System.StringExtension.GetJavaHashCode(System.String)">
+             Returns a hash code for this string. The hash code for a
+             String object is computed as
+            
+             s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]
+            
+             using int arithmetic, where s[i] is the
+             i th character of the string, n is the length of
+             the string, and ^ indicates exponentiation.
+             (The hash value of the empty string is zero.)
+            
+             @return a hash code value for this object.
+            
+              This extension method use the JAVA 5 String class hash code
+              algorithm to compute the JAVA hash
+        </member>
+        <member name="M:System.StringExtension.ToMD5HashCode(System.String)">
+            <summary>
+                Compute a MD5 hash value of the input string value
+            </summary>
+            <param name="value">input value</param>
+            <returns>the result md5 of the input string value</returns>
+        </member>
+        <member name="M:System.StringExtension.ToHashCode(System.String,System.String)">
+            <summary>
+                Compute a hash value of the input string value using special hash algorithm
+            </summary>
+            <param name="value">input value</param>
+            <param name="hashAlgorithmName">
+                the name of hash algorithm, please visit to
+                <remarks>Url:</remarks>
+                <see cref="!:http://msdn.microsoft.com/zh-cn/library/wet69s13(v=vs.85).aspx" /> for the valid names
+            </param>
+            <returns>the result hash code of the input string value</returns>
+        </member>
+        <member name="M:System.StringExtension.IsNullOrEmpty(System.String)">
+            <summary>
+                To test if the string is null or empty at instance level
+            </summary>
+            <param name="value">the string value</param>
+            <returns>the test result</returns>
+        </member>
+        <member name="M:System.StringExtension.IsNotNullOrEmpty(System.String)">
+            <summary>
+                To test if the string is not null or empty at instance level
+            </summary>
+            <param name="value">the string value</param>
+            <returns>the test result</returns>
+        </member>
+        <member name="M:System.StringExtension.JavaToDotNetTimeInLong(System.String)">
+            <summary>
+                java long string time to dot net time in ticks
+            </summary>
+            <param name="javaTimeInLongString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtension.DotNetToJavaTime(System.String)">
+            <summary>
+                convert dot net date time ticks to java long time
+            </summary>
+            <param name="timeInLong"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtension.IsMatch(System.String,System.String)">
+            <summary>
+                wrap the is match method of the regex
+            </summary>
+            <param name="s"></param>
+            <param name="pattern"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtension.Match(System.String,System.String)">
+            <summary>
+                wrap the regex class match method
+            </summary>
+            <param name="s"></param>
+            <param name="pattern"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtension.If(System.String,System.Predicate{System.String},System.Func{System.String,System.String})">
+            <summary>
+                the string class if extension
+            </summary>
+            <param name="value"></param>
+            <param name="predicate"></param>
+            <param name="function"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtension.ToInt32(System.String)">
+            <summary>
+                convert string to int32
+            </summary>
+            <param name="value">string value</param>
+            <returns>the converted int value</returns>
+        </member>
+        <member name="M:System.StringExtension.ToEnum``1(System.String)">
+            <summary>
+                Convert String to Enum
+            </summary>
+            <typeparam name="T">the enum type</typeparam>
+            <param name="value">the enum constant string</param>
+            <returns>converted enum value</returns>
+        </member>
+        <member name="M:System.StringExtension.EqualsIgnoreCase(System.String,System.String)">
+            <summary>
+                equals method with ignore case
+            </summary>
+            <param name="currentValue">current string value</param>
+            <param name="compareValue">compare string value</param>
+            <returns>the equals result</returns>
+        </member>
+        <member name="M:System.StringExtension.IndexOfIgnoreCase(System.String,System.String)">
+            <summary>
+                index of method with ignore case
+            </summary>
+            <param name="currentValue">current string value</param>
+            <param name="compareValue">compare string value</param>
+            <returns>the index of result</returns>
+        </member>
+        <member name="M:System.StringExtension.LastIndexOfIgnoreCase(System.String,System.String)">
+            <summary>
+                last index of method with ignore case
+            </summary>
+            <param name="currentValue">current string value</param>
+            <param name="compareValue">compare string value</param>
+            <returns>the last index of result</returns>
+        </member>
+        <member name="M:System.StringExtension.EndWithIgnoreCase(System.String,System.String)">
+            <summary>
+                equals method with ignore case
+            </summary>
+            <param name="currentValue">current string value</param>
+            <param name="endValue">end string value</param>
+            <returns>the end with string result</returns>
+        </member>
+        <member name="M:System.StringExtension.CompareToIngnoreCase(System.String,System.String)">
+            <summary>
+                Compare two string
+            </summary>
+            <param name="currentValue">first string</param>
+            <param name="compareValue">compare string</param>
+            <returns>compare result</returns>
+        </member>
+        <member name="M:System.StringExtension.ReplaceFirst(System.String,System.String,System.String)">
+            <summary>
+                Replaces the first occurrence of a specified System.String in this instance, with another specified System.String.
+            </summary>
+            <param name="currentValue">current string value</param>
+            <param name="oldValue">old value</param>
+            <param name="newValue">new value</param>
+            <returns>replace result</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:System.TypeExtensions.GetAttributeValue``2(System.Type,System.Func{``0,``1})" -->
+        <member name="M:System.TypeExtensions.GetAttributes``1(System.Type)">
+            <summary>
+                To get the attributes of a object
+            </summary>
+            <typeparam name="T">the attribute type</typeparam>
+            <param name="value">an type object</param>
+            <returns> To get the type attributes</returns>
+        </member>
+        <member name="M:System.TypeExtensions.GetAttribute``1(System.Type)">
+            <summary>
+                To get the attribute of a object
+            </summary>
+            <typeparam name="T">the attribute type</typeparam>
+            <param name="value">an type object</param>
+            <returns> To get the type attribute</returns>
+        </member>
+    </members>
+</doc>

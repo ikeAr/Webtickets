@@ -1,0 +1,195 @@
+﻿@model WebTickets.UserModel
+@using WebTickets.Repo;
+<style type="text/css">
+
+    /*******************************通用样式***********************/
+    body {
+        background-image: url(/Content/z4.jpg);
+        background-size: cover;
+    }
+
+    h1 {
+        font-size: 40px;
+        letter-spacing: 3px;
+        text-align: center;
+        margin-bottom:30px;
+    }
+
+
+    body span {
+        color: #03515d;
+    }
+    .manage_button {
+        background-color: #FFFFBB;
+        border-radius: 10px;
+    }
+    /**************************布局部分********************/
+
+    .table_div {
+        width: 1000px;
+        padding: 10px;
+        margin: 0 auto;
+    }
+
+    .div_clear {
+        clear: both;
+    }
+
+
+    .center_center {
+        height: 400px;
+        width: 900px;
+        float: left;
+    }
+
+    .table_foot {
+        margin-top: 30px;
+    }
+
+    /**************************************表格内容***********************************/
+    .table_content table th:nth-child(even) {
+        background-color: #AAFFEE;
+    }
+
+    .table_content table th:nth-child(odd) {
+        background-color: #00AAAA;
+    }
+
+    .table_content table tr:hover {
+        background-color: #FFFFBB;
+    }
+
+
+    .table_content {
+        margin: 5px;
+        border: 1px dashed #FFF0F5;
+        width: 900px;
+        height: 375px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+
+        .table_content table {
+            width: 100%;
+            border: 0;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+
+            .table_content table th {
+                border-collapse: collapse;
+                height: 60px;
+                border:1px dotted white;
+                text-align: center;
+                font-size: 20px;
+            }
+
+            .table_content table td {
+                height: 40px;
+                word-wrap: break-word;
+                max-width: 300px;
+                text-align: center;
+                vertical-align: middle;
+                border: 1px dotted white;
+            }
+</style>
+<h1>审核用户</h1>
+<div class="table_div">
+    <div class="div_clear">
+        <div class="center_top">
+            <span style="font-weight:bold">你当前的位置</span>：所有用户
+        </div>
+    </div>
+    <div class="center_center">
+        <div class="table_content">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th width="%14">用户名</th>
+                        <th width="%14">@Html.LabelFor(m => m.Name)</th>
+                        <th width="%14">@Html.LabelFor(m => m.Gender)</th>
+                        <th width="%14">@Html.LabelFor(m => m.CollegeClass)</th>
+                        <th width="%14">@Html.LabelFor(m => m.MobilePhone)</th>
+                        <th width="%14">@Html.LabelFor(m => m.Role)</th>
+                        <th width="%16">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var userRepo = new UserRepo();
+                    }
+                    @foreach (var user in userRepo.GetAll(x => x.AuditStatus == 0))
+                    {
+                        <tr>
+                            <td width="%14">@user.RuiJieId</td>
+                            <td width="%14">@user.Name</td>
+                            <td width="%14">@user.Gender</td>
+                            <td width="%14">@user.CollegeClass</td>
+                            <td width="%14">@user.MobilePhone</td>
+                            <td width="%14" class="role">@user.Role</td>
+                            <td width="%16">
+                                <input type="button" onclick="auditUser('@user.Id')" value="通过" class="manage_button"/>
+                                <input type="button" onclick="deleteUser('@user.Id')" value="拒绝" class="manage_button">
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    @section scripts{
+        <script>
+            function auditUser(id) {
+                if (confirm("您确定通过他的申请么")) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Teacher/SaveAuditUser?id=" + id + "&auditStatus=" + 1,
+                        success: function (result) {
+                            if (result) {
+                                alert("操作成功");
+                                window.location.reload();
+                            }
+                        },
+                        error: function (result) {
+                            alert("网络异常，通讯失败");
+                        }
+                    }
+                    )
+                }
+            }
+            function deleteUser(id) {
+                if (confirm("您确定拒绝申请么")) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Administrator/DeletelUser?id=" + id,
+                        success: function (result) {
+                            if (result) {
+                                alert("操作成功");
+                                window.location.reload();
+                            }
+                        },
+                        error: function (result) {
+                            alert("网络异常，通讯失败");
+                        }
+                    }
+                    )
+                }
+            }
+            $(".role").each(function (i, e) {
+                if (e.innerHTML == "User") {
+                    e.innerHTML = "用户";
+                } else if (e.innerHTML == "Maintainner") {
+                    e.innerHTML = "维修人员";
+                } else if (e.innerHTML == "Teacher") {
+                    e.innerHTML = "老师";
+                } else if (e.innerHTML == "Administrator") {
+                    e.innerHTML = "管理员";
+                }
+            })
+        </script>
+
+    }

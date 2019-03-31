@@ -1,0 +1,283 @@
+﻿@{
+    ViewBag.Title = "维修订单";
+}
+@model WebTickets.RequestModel
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.placeholder.min.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/main.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<style>
+    a {
+        color: #33cccc;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+
+        a:hover {
+            color: #29a3a3;
+        }
+
+    .fh5co-form {
+        padding: 30px;
+        margin-top: 4em;
+        -webkit-box-shadow: -4px 7px 46px 2px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: -4px 7px 46px 2px rgba(0, 0, 0, 0.1);
+        box-shadow: -4px 7px 46px 2px rgba(0, 0, 0, 0.1);
+        background: #ffffff;
+    }
+
+    .style-2 .fh5co-form {
+        -webkit-box-shadow: -4px 7px 46px 2px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: -4px 7px 46px 2px rgba(0, 0, 0, 0.1);
+        box-shadow: -4px 7px 46px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .fh5co-form h2 {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 20px;
+        margin: 0 0 30px 0;
+        color: #000000;
+    }
+
+    .fh5co-form .form-group {
+        margin-bottom: 30px;
+    }
+
+        .fh5co-form .form-group p {
+            font-size: 14px;
+            color: #9f9f9f;
+            font-weight: 300;
+        }
+
+            .fh5co-form .form-group p a {
+                color: #000000;
+            }
+
+    .fh5co-form label {
+        font-weight: 300;
+        font-size: 14px;
+        font-weight: 300;
+    }
+
+    .fh5co-form .form-control {
+        font-size: 16px;
+        font-weight: 300;
+        height: 50px;
+        padding-left: 0;
+        padding-right: 0;
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+
+        .fh5co-form .form-control::-webkit-input-placeholder {
+            color: rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+        }
+
+        .fh5co-form .form-control::-moz-placeholder {
+            color: rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+        }
+
+        .fh5co-form .form-control:-ms-input-placeholder {
+            color: rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+        }
+
+    .copyrights {
+        text-indent: -9999px;
+        height: 0;
+        line-height: 0;
+        font-size: 0;
+        overflow: hidden;
+    }
+
+    .fh5co-form .form-control:-moz-placeholder {
+        color: rgba(0, 0, 0, 0.3);
+        text-transform: uppercase;
+    }
+
+    .fh5co-form .form-control:focus, .fh5co-form .form-control:active {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-primary {
+        height: 50px;
+        padding-right: 20px;
+        padding-left: 20px;
+        border: none;
+        background: #33cccc;
+        color: #ffffff;
+        -webkit-box-shadow: -2px 10px 20px -1px rgba(51, 204, 204, 0.4);
+        -moz-box-shadow: -2px 10px 20px -1px rgba(51, 204, 204, 0.4);
+        box-shadow: -2px 10px 20px -1px rgba(51, 204, 204, 0.4);
+    }
+
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+            color: #ffffff;
+            background: #47d1d1 !important;
+            outline: none;
+        }
+
+    input, textarea {
+        color: black;
+    }
+
+    .placeholder {
+        color: #aaa;
+    }
+
+    body {
+        background-image: url(/Content/1234.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: 100% 100%;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <form action="/Request/SaveRegisterData" method="post" class="fh5co-form animate-box" data-animate-effect="fadeIn">
+                    <h2>报修订单</h2>
+                    <div class="form-group">
+                        <label for="UserName" class="sr-only">报修人</label>
+                        <input type="text" class="form-control" placeholder="请输入您的姓名" value="@ViewBag.CurrentUser.Name"name="UserName" id="userName" />
+                        <span id="userName-error-massage" style="color:darkgreen; display: none">用户名不能为空</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="StudentId" class="sr-only">锐捷账号</label>
+                        <input type="text" class="form-control" id="studentId" name="StudentId" placeholder="请输入您的锐捷账号" autocomplete="off">
+                        <span id="studentId-error-massage" style="color :darkgreen; display: none">请输入锐捷账号</span><br />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="sr-only" for="ProblemTitle">问题描述</label>
+                        <input type="text" class="form-control" id="problemTitle" name="ProblemTitle" placeholder="请将问题输入此处" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Telephone" class="sr-only">联系电话</label>
+                        <input type="tel" class="form-control" placeholder="请输入您的可联系方式" name="Telephone" id="telephone" />
+                        <span id="telephone-error-massage" style="color:darkgreen; display: none">请输入联系方式</span><br />
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="location">所在位置</label>
+                        <input type="text" class="form-control" name="Location" placeholder="请输入您的具体位置信息" id="location" />
+                        <span id="location-error-massage" style="color: darkgreen; display: none">请输入所在位置</span><br />
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only">期待处理时间</label>
+                        <input type="text" class="form-control" id="expectTime" name="ExpectTime" placeholder="请输入你期望的处理时间" />
+                        <span id="expectTime-error-massage" style="color:darkgreen; display: none">请输入你期望的处理时间</span>
+                    </div>
+                    <div class="form-group">
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.Id)
+                        <input type="button" value="提交" class="btn btn-primary">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+@section scripts{
+    <script>
+        $(function () {
+            $("#userName").blur(function () {
+                var userName = $("#userName").val();
+                if (userName == "") {
+                    $("#userName-error-massage").show();
+                } else {
+                    $("#userName-error-massage").hide();
+                }
+            })
+            $("#studentId").blur(function () {
+                var studentId = $("#studentId").val();
+                if (studentId == "") {
+                    $("#studentId-error-massage").show();
+                } else {
+                    $("#studentId-error-massage").hide();
+                }
+            })
+            $("#telephone").blur(function () {
+                var telephone = $("#telephone").val();
+                if (telephone == "") {
+                    $("#telephone-error-massage").show();
+                }
+                else {
+                    $("#telephone-error-massage").hide();
+                }
+            })
+            $("#location").blur(function () {
+                var location = $("#location").val();
+                if (location == "") {
+                    $("#location-error-massage").show();
+                } else {
+                    $("#location-error-massage").hide();
+                }
+            })
+            $("#expectTime").blur(function () {
+                var expectTime = $("#expectTime").val();
+                if (expectTime == "") {
+                    $("#expectTime-error-massage").show();
+                } else {
+                    $("#expectTime-error-massage").hide();
+                }
+            })
+            $(".btn-primary").click(function () {
+                var userName = $("#userName").val();
+                var studentId = $("#studentId").val();
+                var telephone = $("#telephone").val();
+                var location = $("#location").val();
+                var expectTime = $("#expectTime").val();
+                if (userName == "" | studentId == "" | telephone == "" | location == "" | expectTime == "") {
+                    alert("您有未填写的信息，请填完之后提交");
+                } else {
+                    var myObj = {
+                        userName: $("#userName").val(),
+                        studentId: $("#studentId").val(),
+                        problemTitle: $("#problemTitle").val(),
+                        telephone: $("#telephone").val(),
+                        location: $("#location").val(),
+                        expectTime: $("#expectTime").val()
+                    }
+                    var ajaxParam = {
+                        type: "POST",
+                        url: "/Request/SaveRequestData",
+                        data: myObj,
+                        success: function () {       
+                        },
+                        error: function () {
+                            alert("Network error");
+                        }
+                    };
+                    $.ajax(ajaxParam);
+                    alert("您已提交成功，请耐心等待维修人员处理");
+                    window.location.href = "/Home/Index";
+                }
+            })
+        })
+    </script>
+}

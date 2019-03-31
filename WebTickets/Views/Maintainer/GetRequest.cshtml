@@ -1,0 +1,150 @@
+﻿@using WebTickets.Repo;
+@model WebTickets.RequestModel
+<style type="text/css">
+    body {
+        background-image: url(/Content/z4.jpg);
+        background-size: cover;
+    }
+
+    h1 {
+        font-size: 40px;
+        letter-spacing: 3px;
+        text-align: center;
+    }
+
+    body span {
+        color: #03515d;
+    }
+
+    .center_bottom input {
+        color: #03515d;
+        font-size: 12px;
+        height: 20px;
+        width: 40px;
+        padding: 2px;
+        vertical-align: middle;
+        text-align: center;
+        margin-bottom: 6px;
+    }
+    /**************************布局部分********************/
+
+    .table_div {
+        width: 900px;
+        padding: 10px;
+        margin: 0 auto;
+    }
+
+    .div_clear {
+        clear: both;
+    }
+
+
+    .center_center {
+        height: 400px;
+        width: 900px;
+        float: left;
+    }
+
+    .table_foot {
+        margin-top: 30px;
+    }
+
+    /**************************************表格内容***********************************/
+    .table_content table th:nth-child(even) {
+        background-color: #D1BBFF;
+    }
+
+    .table_content table th:nth-child(odd) {
+        background-color: #E8CCFF;
+    }
+
+    .table_content table tr:hover {
+        background-color: #FFDEAD;
+    }
+
+    .table_content {
+        margin: 5px;
+        border: 1px dashed #FFF0F5;
+        width: 900px;
+        height: 375px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+
+        .table_content table {
+            width: 100%;
+            border: 0;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+
+            .table_content table th {
+                border-collapse: collapse;
+                height: 60px;
+                border-right: 2px dashed #FFF0F5;
+                border-bottom: 2px dashed #FFF0F5;
+                text-align: center;
+                font-size: 20px;
+            }
+
+            .table_content table td {
+                height: 40px;
+                word-wrap: break-word;
+                max-width: 300px;
+                text-align: center;
+                vertical-align: middle;
+                border-right: 2px dashed #FFF0F5;
+                border-bottom: 2px dashed #FFF0F5;
+            }
+</style>
+<h1>已接订单</h1>
+<div class="table_div">
+    <div class="table_content">
+        <table>
+            <thead>
+                <tr>
+                    <th width="12%">@Html.LabelFor(m => m.StudentId)</td>
+                    <th width="12%">@Html.LabelFor(m => m.UserName)</th>
+                    <th width="12%">@Html.LabelFor(m => m.ProblemTitle)</th>
+                    <th width="12%">@Html.LabelFor(m => m.Telephone)</th>
+                    <th width="16%">@Html.LabelFor(m => m.Location)</th>
+                    <th width="12%">@Html.LabelFor(m => m.ExpectTime)</th>
+                    <th width="12%">@Html.LabelFor(m => m.Maintainer)</th>
+                    <th width="12%">@Html.LabelFor(m => m.Condition)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var requestRepo = new RequestRepo();
+                    var maintainer = (UserModel)ViewBag.CurrentUser;
+                }
+                @foreach (var request in requestRepo.GetAll(x => x.Maintainer == maintainer.Name))
+                {
+                    <tr>
+                        <td>@request.StudentId</td>
+                        <td>@request.UserName</td>
+                        <td>@request.ProblemTitle</td>
+                        <td>@request.Telephone</td>
+                        <td>@request.Location</td>
+                        <td>@request.ExpectTime</td>
+                        <td>@request.Maintainer</td>
+                        <td class="condition" id="Condition-@request.Id" value="">@request.Condition</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $(".condition").each(function (i, e) {//两个参数
+            if (e.innerHTML == "0") {
+                e.innerHTML = "待处理";
+            } else if (e.innerHTML == '1') {
+                e.innerHTML = "已接收";
+            }
+        })
+    </script>
+}

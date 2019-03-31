@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="qualified" 
+           elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"  
+           targetNamespace="http://schemas.nap7.com" 
+           xmlns="http://schemas.nap7.com">
+  <xs:element name="MongoDBConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="MongoDB">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MongoDBClient">
+                <xs:complexType>
+                  <xs:attribute name="Id" type="xs:string" />
+                  <xs:attribute name="Mode">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Read" />
+                        <xs:enumeration value="Write" />
+                        <xs:enumeration value="Full" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="ConnectionString" type="xs:string" use="required" />
+                  <xs:attribute name="DefaultDatabase" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
