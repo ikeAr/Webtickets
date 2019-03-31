@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebTickets</RootNamespace>
     <AssemblyName>WebTickets</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -132,11 +133,7 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -234,6 +231,13 @@
     <Compile Include="Repo\UserRepo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\17e98a7dabc5d305c357a108eefbe3c9.jpg" />
+    <Content Include="Content\22456.jpg" />
+    <Content Include="Content\2389.jpg" />
+    <Content Include="Content\3445.jpg" />
+    <Content Include="Content\36.jpg" />
+    <Content Include="Content\577f6443cf278.jpg" />
+    <Content Include="Content\5a0d3978a3352.jpg" />
     <Content Include="Content\about-image.jpg" />
     <Content Include="Content\advice.jpg" />
     <Content Include="Content\author-image1.jpg" />
@@ -248,6 +252,7 @@
     <Content Include="Content\comment-image2.jpg" />
     <Content Include="Content\dalianschool.jpg" />
     <Content Include="Content\dingdan.jpg" />
+    <Content Include="Content\gfgdgvghdytj.jpg" />
     <Content Include="Content\logo99.jpg" />
     <Content Include="Content\navlogo.jpg" />
     <Content Include="Content\personal.jpg" />
@@ -257,6 +262,10 @@
     <Content Include="Content\single-project-img.jpg" />
     <Content Include="Content\Supermen.jpg" />
     <Content Include="Content\teacher.jpg" />
+    <Content Include="Content\th %281%29.jpg" />
+    <Content Include="Content\th %282%29.jpg" />
+    <Content Include="Content\th %283%29.jpg" />
+    <Content Include="Content\th.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
