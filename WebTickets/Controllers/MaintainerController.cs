@@ -23,6 +23,7 @@ namespace WebTickets.Controllers
             return this.Json("true",JsonRequestBehavior.AllowGet);   
         }
 
+        [AllowAnonymous]
         public ActionResult Introduction()
         {
             return View();

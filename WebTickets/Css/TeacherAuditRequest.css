@@ -21,24 +21,24 @@ h1 {
     text-decoration: none;
     outline: none;
     color: darkslategray;
-    background-color: #5599FF;
+    background-color: #FFEE99;
     border: none;
     border-radius: 8px;
     box-shadow: 0 5px #999;
 }
 
     #check_order, #del_order:hover {
-        background-color: #4682B4
+        background-color: #FFEE99
     }
 
     #del_order:active {
-        background-color: #0000AA;
+        background-color: #FFEE99;
         box-shadow: 0 5px #666;
         transform: translateY(4px);
     }
 
     #check_order:active {
-        background-color: #0000AA;
+        background-color: #FFEE99;
         box-shadow: 0 5px #666;
         transform: translateY(4px);
     }

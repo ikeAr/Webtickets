@@ -34,7 +34,7 @@ namespace WebTickets.Controllers
             requestRepo.DeleteMany(x => x.Id == id);
             return View("AuditRequest");
         }
-       
+        [AllowAnonymous]
         public ActionResult Introduction()
         {
             return View();
